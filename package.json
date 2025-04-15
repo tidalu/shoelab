@@ -1,0 +1,19 @@
+{
+  "name": "shoelab",
+  "version": "1.0.0",
+  "description": "shoe recommender cli",
+  "keywords": [
+    "shoes"
+  ],
+  "license": "ISC",
+  "author": "Ulugbek Norbutaev",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "run"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "inquirer": "^12.5.2"
+  }
+}
