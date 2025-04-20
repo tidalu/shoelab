@@ -8,12 +8,12 @@ class AthleteProfile {
     }
 
     getStepIntensity() {
-        switch (this.activiityLevel) {
+        switch (this.activityLevel) {
             case 'intense':
                 return 3;
             case 'moderate':
                 return 2;
-            case "casual":
+            case "casual": 
                 default:
                     return 1;
         }
