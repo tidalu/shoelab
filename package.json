@@ -8,9 +8,10 @@
   "license": "ISC",
   "author": "Ulugbek Norbutaev",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "run"
+    "dev": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "chalk": "^5.4.1",
