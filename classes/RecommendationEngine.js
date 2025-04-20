@@ -13,7 +13,7 @@ class RecommendationEngine {
 
             if(athlete.preferredTerrain === 'trail' && shoe.constuctor.name === 'RunningShoe') {
                 score += 20;
-            } else if (['rock', 'mud'].inclides(athlete.preferredTerrain) && shoe.constuctor.name === 'HikingBoot') {
+            } else if (['rock', 'mud'].includes(athlete.preferredTerrain) && shoe.constuctor.name === 'HikingBoot') {
                 score += 20;
             }
 
