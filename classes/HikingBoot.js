@@ -42,10 +42,11 @@ class HikingBook extends Shoe {
     getDetailedInfo() {
         return {
             ...this.getBasicInfo(),
-            type: "HikingBoot",
+            type: this.constructor.name,
             ankleSupport: this.ankleSupport,
             comfortScore: this.getComfortScore(),
-        };
+            wearLevel: this.wearLevel.toFixed(2),
+          };
     }
 }
 
