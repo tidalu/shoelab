@@ -1,6 +1,7 @@
 // const inquirer = require('inquirer');
 const readline = require('readline');
 const chalk = require('chalk');
+const fs = require('fs');
 
 const ShoeFactory = require('./classes/ShoeFactory');
 const AthleteProfile = require('./classes/AthleteProfile');
@@ -13,10 +14,20 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-
-const shoeData = {
-
+function saveShoeData(data) {
+    fs.writeFileSync('shoeData.json', JSON.stringify(data, null, 2), 'utf-8');
 }
+
+
+function loadShoeData() {
+    try {
+        const data = fs.readFileSync('shoeData.json', 'utf-8');
+        return JSON.parse(data);
+    } catch (error) {
+        return {}; 
+    }
+}
+
 
 
 function askQuestion(query) {
@@ -36,6 +47,8 @@ function visualizeWearLevel(wearLevel) {
 }
 (async () => {
     console.log("👟 Welcome to ShoeLab CLI!");
+
+    let shoeData = loadShoeData();
 
     const name = await askQuestion("👤 What's your name? ");
     const footSize = parseFloat(await askQuestion("📏 Your foot size (EU)? "));
@@ -106,6 +119,8 @@ function visualizeWearLevel(wearLevel) {
     console.log(`🔧 New durability left: ${shoeData[selectedShoe.modelName].durabilityLeft} km`);
     console.log(`💥 Current wear level: ${visualizeWearLevel(shoeData[selectedShoe.modelName].wearLevel)}`);
 
+    saveShoeData(shoeData);
+
     // based oint eh wear level
     console.log("\n📊 Recommending shoes based on wear level...")
     const updatedRank =  RecommendationEngine.recommend(profile, shoes).filter(r => r.shoe.durabilityLeft > 0)
@@ -133,6 +148,8 @@ function visualizeWearLevel(wearLevel) {
             console.log(`🏃‍♂️ You ran ${totalDistanceRan} km in your ${selectedShoe.brand} ${selectedShoe.modelName}.`);
             console.log(`🔧 New durability left: ${shoeData[selectedShoe.modelName].durabilityLeft} km`);
             console.log(`💥 Current wear level: ${visualizeWearLevel(shoeData[selectedShoe.modelName].wearLevel)}`);
+
+            saveShoeData(shoeData);
         })();
     }
     

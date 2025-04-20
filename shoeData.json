@@ -1,0 +1,12 @@
+{
+  "Air Max": {
+    "totalDistance": 100,
+    "durabilityLeft": 80,
+    "wearLevel": "55.56"
+  },
+  "Classic": {
+    "totalDistance": 300,
+    "durabilityLeft": -150,
+    "wearLevel": "200.00"
+  }
+}
