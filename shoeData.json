@@ -5,8 +5,13 @@
     "wearLevel": "55.56"
   },
   "Classic": {
-    "totalDistance": 300,
-    "durabilityLeft": -150,
-    "wearLevel": "200.00"
+    "totalDistance": 330,
+    "durabilityLeft": -180,
+    "wearLevel": "220.00"
+  },
+  "Fresh Foam": {
+    "totalDistance": 443,
+    "durabilityLeft": -263,
+    "wearLevel": "295.33"
   }
 }

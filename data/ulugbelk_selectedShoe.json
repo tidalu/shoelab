@@ -1,0 +1,12 @@
+{
+  "brand": "New Balance",
+  "modelName": "Fresh Foam",
+  "size": 39,
+  "material": "Mesh",
+  "durabilityLeft": 150,
+  "wornOut": false,
+  "type": "RunningShoe",
+  "cushioningLevel": "High",
+  "comfortScore": 170,
+  "wearLevel": "79.33"
+}
