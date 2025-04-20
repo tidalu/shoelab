@@ -38,15 +38,14 @@ class RunningShoe extends Shoe {
     }
 
     getComfortScore() {
-        const wearImpact = this.wearLevel * 0.5
-        const cushionBonus ={
-            Low: 5, 
-            Medium: 10,
-            High: 15
-        }[this.cushioningLevel] || 10;
-
-        return Math.max(0, 100 - wearImpact + cushionBonus);
-    }
+        let cushioningBonus = 0;
+        switch (this.cushioningLevel) {
+          case 'High': cushioningBonus = 20; break;
+          case 'Medium': cushioningBonus = 10; break;
+          case 'Low': cushioningBonus = 0; break;
+        }
+        return this.getRemainingDurability() + cushioningBonus;
+}
 
     getDetailedInfo() {
         return {
@@ -54,7 +53,8 @@ class RunningShoe extends Shoe {
             type: "RunningShoe",
             cushioningLevel: this.cushioningLevel,
             comfortScore: this.getComfortScore(),
-        };
+            wearLevel: this.wearLevel.toFixed(2),
+          };
     }
 }
 
