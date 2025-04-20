@@ -1,4 +1,4 @@
-const RUnningShoe = require('./RunningShoe');
+const RunningShoe = require('./RunningShoe');
 const HikingBoot = require('./HikingBoot');
 
 
@@ -23,7 +23,7 @@ class ShoeFactory {
         } else {
             const cushiooningOptions = ['Low', 'Medium', 'High'];
             const cushioning = ShoeFactory._pick(cushiooningOptions);
-            return new RUnningShoe(brand, model, size, material, baseDurability, cushioning);
+            return new RunningShoe(brand, model, size, material, baseDurability, cushioning);
         }
     }
 
@@ -31,7 +31,7 @@ class ShoeFactory {
         return array[Math.floor(Math.random() * array.length)];
     }
 
-    static gemerateMany(type, count = 10) {
+    static generateMany(type, count = 10) {
         return Array.from({length: count}, () => ShoeFactory.createRandomShoe(type));
     }
     
