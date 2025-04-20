@@ -228,6 +228,35 @@ function visualizeWearLevel(wearLevel) {
     })();
   }
 
+
+  const wantToDelete =  await askQuestion(
+    "Do you want to delete a shoe from your data? (yes/no) "
+  );
+  if(wantToDelete.toLowerCase() === "yes") {
+    const allModels = Object.keys(shoeData);
+
+    if(allModels.length === 0) {
+      console.log("No shoes to delete.");
+    } else {
+        console.log("\n📂 Shoes available for deletion:")
+        allModels.forEach((model, i) => {
+            console.log(`${i + 1}. ${model}`);
+        });
+
+        const deleteIndex = await askQuestion("Enter the number of the shoe to delete: ");
+        const index = parseInt(deleteIndex);
+
+        if (!isNaN(index) && allModels[index - 1]) {
+            const deletedModel = allModels[index - 1];
+            delete shoeData[deletedModel];
+            console.log(`🗑️ Deleted shoe: ${deletedModel}`);
+            saveShoeData(shoeData);
+          } else {
+            console.log("❌ Invalid selection. No shoe deleted.");
+          }
+
+    }
+}
   rl.close();
   const finalName = profile.name;
   saveJSON(`${finalName}_profile.json`, profile);

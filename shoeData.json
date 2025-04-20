@@ -1,17 +1,7 @@
 {
   "Air Max": {
-    "totalDistance": 100,
-    "durabilityLeft": 80,
-    "wearLevel": "55.56"
-  },
-  "Classic": {
-    "totalDistance": 330,
-    "durabilityLeft": -180,
-    "wearLevel": "220.00"
-  },
-  "Fresh Foam": {
-    "totalDistance": 443,
-    "durabilityLeft": -263,
-    "wearLevel": "295.33"
+    "totalDistance": 101,
+    "durabilityLeft": 79,
+    "wearLevel": "67.33"
   }
 }

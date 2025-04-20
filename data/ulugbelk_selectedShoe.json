@@ -1,12 +1,12 @@
 {
   "brand": "New Balance",
-  "modelName": "Fresh Foam",
-  "size": 39,
+  "modelName": "Air Max",
+  "size": 43,
   "material": "Mesh",
   "durabilityLeft": 150,
   "wornOut": false,
   "type": "RunningShoe",
-  "cushioningLevel": "High",
-  "comfortScore": 170,
-  "wearLevel": "79.33"
+  "cushioningLevel": "Low",
+  "comfortScore": 150,
+  "wearLevel": "40.67"
 }
