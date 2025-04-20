@@ -1,5 +1,6 @@
 // const inquirer = require('inquirer');
 const readline = require('readline');
+const chalk = require('chalk');
 
 const ShoeFactory = require('./classes/ShoeFactory');
 const AthleteProfile = require('./classes/AthleteProfile');
@@ -24,6 +25,14 @@ function askQuestion(query) {
             resolve(answer);
         });
     })
+}
+
+function visualizeWearLevel(wearLevel) {
+    const wearProgress = Math.min(wearLevel, 100)
+    const barLength = 20; 
+    const progressBar = '█'.repeat(Math.floor((wearProgress / 100) * barLength));
+    const emptyBar = '░'.repeat(barLength - progressBar.length);
+    return `${progressBar}${emptyBar} ${wearProgress.toFixed(2)}%`;
 }
 (async () => {
     console.log("👟 Welcome to ShoeLab CLI!");
@@ -93,9 +102,19 @@ function askQuestion(query) {
 
 
     // updateed shoe status
-        console.log(`\n🏃‍♂️ You ran ${distanceRan} km in your ${selectedShoe.brand} ${selectedShoe.modelName}.`);
+    console.log(`\n🏃‍♂️ You ran ${distanceRan} km in your ${selectedShoe.brand} ${selectedShoe.modelName}.`);
     console.log(`🔧 New durability left: ${shoeData[selectedShoe.modelName].durabilityLeft} km`);
-    console.log(`💥 Current wear level: ${shoeData[selectedShoe.modelName].wearLevel}%`);
+    console.log(`💥 Current wear level: ${visualizeWearLevel(shoeData[selectedShoe.modelName].wearLevel)}`);
+
+    // based oint eh wear level
+    console.log("\n📊 Recommending shoes based on wear level...")
+    const updatedRank =  RecommendationEngine.recommend(profile, shoes).filter(r => r.shoe.durabilityLeft > 0)
+
+     // display updated recommendations
+     updatedRank.slice(0, 3).forEach((r, i) => {
+        console.log(`\n#${i + 1} 🥇 Score: ${r.score}`);
+        console.table(r.shoe);
+    });
     
 
     const trackAnotherRun = await askQuestion("Would you like to track another run? (yes/no) ");
@@ -113,7 +132,7 @@ function askQuestion(query) {
     
             console.log(`🏃‍♂️ You ran ${totalDistanceRan} km in your ${selectedShoe.brand} ${selectedShoe.modelName}.`);
             console.log(`🔧 New durability left: ${shoeData[selectedShoe.modelName].durabilityLeft} km`);
-            console.log(`💥 Current wear level: ${shoeData[selectedShoe.modelName].wearLevel}%`);
+            console.log(`💥 Current wear level: ${visualizeWearLevel(shoeData[selectedShoe.modelName].wearLevel)}`);
         })();
     }
     
