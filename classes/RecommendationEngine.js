@@ -1,6 +1,5 @@
 class RecommendationEngine {
     static recommend(athlete, shoes) {
-        // console.log(athlete, 'this is athlete in recommendation engine')
         const recommendations = shoes.map(shoe =>{
             let score = 0;
 
@@ -9,7 +8,6 @@ class RecommendationEngine {
             const sizeDiff = Math.abs(shoe.size - athlete.footSize);
             console.log('size diff', sizeDiff)
             score += Math.max(0, 30 - sizeDiff * 10);
-            // console.log('scoore in size match', score)
 
             // terain match
 
@@ -22,7 +20,6 @@ class RecommendationEngine {
             //activity level
             if( athlete.activityLevel === 'intense' && shoe.baseDurability >= 150) {
                 score += 15;
-                // console.log('score in loop', score)
             }
 
             // comfort score
