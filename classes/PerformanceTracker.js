@@ -5,16 +5,16 @@ class PerformanceTracker {
 
 
     logStep(athlete, shoe, stepNumber) {
-        this.logs.push([
-            athleteName = athlete.name,
-            shoeType = shoe.constructor.name,
-            shoeModel = shoe.modelName,
-            terrain = athlete.preferredTerrain,
-            activityLevel = athlete.activityLevel,
+        this.logs.push({
+            athleteName : athlete.name,
+            shoeType : shoe.constructor.name,
+            shoeModel : shoe.modelName,
+            terrain : athlete.preferredTerrain,
+            activityLevel : athlete.activityLevel,
             stepNumber, 
-            wearLevel = shoe.wearLevel.toFixed(2),
-            comfortScore = shoe.getComfortScore().toFixed(2),
-        ])
+            wearLevel : shoe.wearLevel.toFixed(2),
+            comfortScore : shoe.getComfortScore().toFixed(2),
+    })
     }
 
 
