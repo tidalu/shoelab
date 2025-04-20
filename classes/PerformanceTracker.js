@@ -19,6 +19,7 @@ class PerformanceTracker {
 
 
     simulateAndTrack(athlete, shoe, steps = 10) {
+        console.log('log shoes in simulate and track ', shoe)
         for(let i = 0; i < steps; i ++) {
             athlete.simulateActivity(shoe, 1);
             this.logStep(athlete, shoe, i + 1);
