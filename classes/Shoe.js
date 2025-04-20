@@ -12,6 +12,8 @@ class Shoe {
         this.material = material;
         this.baseDurability = baseDurability;
         this.#wearLevel = 0;
+        this.durabilityLeft = Math.floor(Math.random() * this.baseDurability);
+
 
         Shoe.totalShoesCreated++;
     }
@@ -19,7 +21,7 @@ class Shoe {
     #wearLevel;
 
     get wearLevel() {
-        return this.#wearLevel;
+        return 100 - (this.durabilityLeft / this.baseDurability) * 100;
     }
 
 
