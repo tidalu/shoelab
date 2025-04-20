@@ -11,7 +11,10 @@ const shoe = ShoeFactory.generateMany('HikingBoot', 5).concat(
 
 // performance tracking test
 const tracker = new PerformanceTracker();
-tracker.simulateAndTrack(athlete, shoe, 15);
+for(i = 0; i < shoe.length; i++) {
+    tracker.simulateAndTrack(athlete, shoe[i], 15);
+}
+
 
 tracker.printLogs(); 
 
