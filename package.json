@@ -5,6 +5,9 @@
   "keywords": [
     "shoes"
   ],
+  "bin": {
+    "shoelab": "./bin/shoelab.js"
+  }, 
   "license": "ISC",
   "author": "Ulugbek Norbutaev",
   "type": "commonjs",
