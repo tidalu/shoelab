@@ -6,7 +6,6 @@ class RecommendationEngine {
 
             // size match
             const sizeDiff = Math.abs(shoe.size - athlete.footSize);
-            console.log('size diff', sizeDiff)
             score += Math.max(0, 30 - sizeDiff * 10);
 
             // terain match
@@ -29,14 +28,14 @@ class RecommendationEngine {
             }
 
             // wear penalty 
-            const wearPenalty = Math.min(30, Math.floor(shoe.wearLevel * 0.5))
+            const wearPenalty = Math.floor(parseFloat(shoe.wearLevel) * 0.5);
             score -= wearPenalty;
 
             return {
                 shoe: shoe.getDetailedInfo(),
                 score : score,
-            }
-        })
+        }
+    })
 
         return recommendations.sort((a, b) => b.score - a.score)
     }
