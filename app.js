@@ -12,6 +12,12 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
+
+const shoeData = {
+
+}
+
+
 function askQuestion(query) {
     return new Promise((resolve) => {
         rl.question(query, (answer) => {
@@ -65,21 +71,51 @@ function askQuestion(query) {
     
     console.log(`\n👟 You selected: ${selectedShoe.brand} ${selectedShoe.modelName}`);
     
+
+    if (!shoeData[selectedShoe.modelName]) {
+        shoeData[selectedShoe.modelName] = {
+            totalDistance: 0,
+            durabilityLeft: selectedShoe.durabilityLeft,
+            wearLevel: 0,
+        };
+    }
     
     const distanceRan = parseFloat(await askQuestion("🏃‍♂️ How many kilometers did you run? "));
+
+      // update data 
+      shoeData[selectedShoe.modelName].totalDistance += distanceRan;
+      shoeData[selectedShoe.modelName].durabilityLeft -= distanceRan;
     
     // calculate wearlevel and durability of the selected shoe for the user 
 
-    const wearLevel = (distanceRan / selectedShoe.durabilityLeft) * 100;
-    selectedShoe.durabilityLeft -= distanceRan;
-    selectedShoe.wearLevel = wearLevel.toFixed(2);
+    const wearLevel =(shoeData[selectedShoe.modelName].totalDistance / selectedShoe.durabilityLeft) * 100;
+    shoeData[selectedShoe.modelName].wearLevel = wearLevel.toFixed(2);
+
 
     // updateed shoe status
-    console.log(`\n🏃‍♂️ You ran ${distanceRan} km in your ${selectedShoe.brand} ${selectedShoe.modelName}.`);
-    console.log(`🔧 New durability left: ${selectedShoe.durabilityLeft} km`);
-    console.log(`💥 Current wear level: ${selectedShoe.wearLevel}%`);
-
+        console.log(`\n🏃‍♂️ You ran ${distanceRan} km in your ${selectedShoe.brand} ${selectedShoe.modelName}.`);
+    console.log(`🔧 New durability left: ${shoeData[selectedShoe.modelName].durabilityLeft} km`);
+    console.log(`💥 Current wear level: ${shoeData[selectedShoe.modelName].wearLevel}%`);
     
+
+    const trackAnotherRun = await askQuestion("Would you like to track another run? (yes/no) ");
+    if (trackAnotherRun.toLowerCase() === 'yes') {
+        // repet the process for the user if he wants to track another run
+        await (async () => {
+            let totalDistanceRan = parseFloat(await askQuestion(`How many kilometers did you run in your ${selectedShoe.brand} ${selectedShoe.modelName}? `));
+            
+            shoeData[selectedShoe.modelName].totalDistance += totalDistanceRan;
+            shoeData[selectedShoe.modelName].durabilityLeft -= totalDistanceRan;
+    
+            // wearlevel update
+            const wearLevel = (shoeData[selectedShoe.modelName].totalDistance / selectedShoe.durabilityLeft) * 100;
+            shoeData[selectedShoe.modelName].wearLevel = wearLevel.toFixed(2);
+    
+            console.log(`🏃‍♂️ You ran ${totalDistanceRan} km in your ${selectedShoe.brand} ${selectedShoe.modelName}.`);
+            console.log(`🔧 New durability left: ${shoeData[selectedShoe.modelName].durabilityLeft} km`);
+            console.log(`💥 Current wear level: ${shoeData[selectedShoe.modelName].wearLevel}%`);
+        })();
+    }
     
     
     rl.close();
