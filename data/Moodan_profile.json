@@ -1,0 +1,7 @@
+{
+  "name": "Moodan",
+  "footSize": 42,
+  "preferredTerrain": "trail",
+  "activityLevel": "intense",
+  "preferredShoeType": "RunningShoe"
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "brand": "Puma",
+    "modelName": "Ultra Boost",
+    "size": 43,
+    "material": "Synthetic",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 110,
+    "wearLevel": "95.00"
+  },
+  {
+    "brand": "Adidas",
+    "modelName": "Fresh Foam",
+    "size": 43,
+    "material": "Leather",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 110,
+    "wearLevel": "36.00"
+  },
+  {
+    "brand": "Nike",
+    "modelName": "Clyde",
+    "size": 41,
+    "material": "Mesh",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "High",
+    "comfortScore": 120,
+    "wearLevel": "82.00"
+  },
+  {
+    "brand": "Adidas",
+    "modelName": "Ultra Boost",
+    "size": 40,
+    "material": "Synthetic",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "High",
+    "comfortScore": 120,
+    "wearLevel": "39.00"
+  },
+  {
+    "brand": "Reebok",
+    "modelName": "Classic",
+    "size": 42,
+    "material": "Synthetic",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "High",
+    "comfortScore": 170,
+    "wearLevel": "93.33"
+  },
+  {
+    "brand": "New Balance",
+    "modelName": "Fresh Foam",
+    "size": 40,
+    "material": "Leather",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": false,
+    "comfortScore": 21.111111111111107,
+    "wearLevel": "72.22"
+  },
+  {
+    "brand": "Reebok",
+    "modelName": "Classic",
+    "size": 41,
+    "material": "Synthetic",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 54.66666666666667,
+    "wearLevel": "13.33"
+  },
+  {
+    "brand": "Reebok",
+    "modelName": "Fresh Foam",
+    "size": 44,
+    "material": "Canvas",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 53.66666666666667,
+    "wearLevel": "15.83"
+  },
+  {
+    "brand": "Adidas",
+    "modelName": "Air Max",
+    "size": 42,
+    "material": "Mesh",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 37.2,
+    "wearLevel": "57.00"
+  },
+  {
+    "brand": "Nike",
+    "modelName": "Clyde",
+    "size": 39,
+    "material": "Synthetic",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 30.93333333333333,
+    "wearLevel": "72.67"
+  }
+]
