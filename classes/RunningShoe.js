@@ -2,7 +2,7 @@ const Shoe = require("./Shoe.js");
 
 
 class RunningShoe extends Shoe {
-    constructor(brand, modelName, size, material, baseDurability, cushioningLevel) {
+    constructor(brand, modelName, size, material, baseDurability = 100, cushioningLevel) {
         super(brand, modelName, size, material, baseDurability);
         this.cushioningLevel = cushioningLevel;
     }
