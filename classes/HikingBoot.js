@@ -1,7 +1,7 @@
 const Shoe = require("./Shoe.js");
 
-class HikingBook extends Shoe {
-    constructor(brand, modelName, size, material, baseDurability, ankleSupport = true) {
+class HikingBoot extends Shoe {
+    constructor(brand, modelName, size, material, baseDurability = 100, ankleSupport = true) {
         super(brand, modelName, size, material, baseDurability);
         this.ankleSupport = ankleSupport;
     }
@@ -50,4 +50,4 @@ class HikingBook extends Shoe {
     }
 }
 
-module.exports = HikingBook;
+module.exports = HikingBoot;
