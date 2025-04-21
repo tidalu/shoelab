@@ -266,7 +266,7 @@ async function runAction() {
     );
 
     PerformanceTracker.trackRun(shoeData, selectedShoe, distanceRan);
-    saveJSON("../shoeData.json", shoeData);
+    // saveJSON("../shoeData.json", shoeData);
     // update data
     saveShoeData(shoeData);
 
