@@ -14,7 +14,7 @@ class ShoeFactory {
         const model = ShoeFactory._pick(models);
         const size = ShoeFactory._pick(sizes);
         const material = ShoeFactory._pick(materials);
-        const baseDurability = ShoeFactory._pick(durability);
+        const baseDurability = ShoeFactory._pick(durability) || 100; 
 
         if(type === "HikingBoot") {
             const ankleSupport = Math.random() < 0.8; 
