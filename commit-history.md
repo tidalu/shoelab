@@ -1,3 +1,15 @@
+## dfc6cf4 - Tidalu, 2025-04-22 : remove shoe data JSON file
+ shoeData.json | 17 -----------------
+ 1 file changed, 17 deletions(-)
+
+## e7c3392 - Tidalu, 2025-04-22 : add initial README.md with project overview, features, installation, usage, and development guidelines
+ README.md | 143 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 143 insertions(+)
+
+## 96f9934 - Tidalu, 2025-04-22 : add commit history documentation
+ commit-history.md | 313 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 313 insertions(+)
+
 ## e843707 - Tidalu, 2025-04-22 : dynamic data generated
  data/Jakub_profile.json      |   7 +++
  data/Jakub_selectedShoe.json |  12 +++++
