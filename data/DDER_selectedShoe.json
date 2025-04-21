@@ -3,10 +3,10 @@
   "modelName": "Ultra Boost",
   "size": 38,
   "material": "Mesh",
-  "durabilityLeft": 100,
+  "durabilityLeft": 49.17,
   "wornOut": false,
   "type": "RunningShoe",
   "cushioningLevel": "High",
-  "comfortScore": 120,
+  "comfortScore": 69.17,
   "wearLevel": "-20.00"
 }
