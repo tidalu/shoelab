@@ -1,0 +1,12 @@
+{
+  "brand": "Lowa",
+  "modelName": "Merrell",
+  "size": 38,
+  "material": "Mesh",
+  "durabilityLeft": 100,
+  "wornOut": false,
+  "type": "RunningShoe",
+  "cushioningLevel": "Low",
+  "comfortScore": 100,
+  "wearLevel": "-80.00"
+}
