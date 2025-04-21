@@ -1,0 +1,122 @@
+[
+  {
+    "brand": "Nike",
+    "modelName": "Ultra Boost",
+    "size": 43,
+    "material": "Canvas",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "High",
+    "comfortScore": 140,
+    "wearLevel": "1.67"
+  },
+  {
+    "brand": "Reebok",
+    "modelName": "Fresh Foam",
+    "size": 41,
+    "material": "Mesh",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 130,
+    "wearLevel": "55.83"
+  },
+  {
+    "brand": "Nike",
+    "modelName": "Air Max",
+    "size": 41,
+    "material": "Synthetic",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Low",
+    "comfortScore": 180,
+    "wearLevel": "31.11"
+  },
+  {
+    "brand": "Puma",
+    "modelName": "Ultra Boost",
+    "size": 45,
+    "material": "Leather",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "High",
+    "comfortScore": 140,
+    "wearLevel": "85.83"
+  },
+  {
+    "brand": "Adidas",
+    "modelName": "Ultra Boost",
+    "size": 39,
+    "material": "Mesh",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 190,
+    "wearLevel": "73.33"
+  },
+  {
+    "brand": "Adidas",
+    "modelName": "Air Max",
+    "size": 42,
+    "material": "Canvas",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "HikingBook",
+    "ankleSupport": true,
+    "comfortScore": 29.066666666666663,
+    "wearLevel": "77.33"
+  },
+  {
+    "brand": "Nike",
+    "modelName": "Air Max",
+    "size": 45,
+    "material": "Leather",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBook",
+    "ankleSupport": true,
+    "comfortScore": 42,
+    "wearLevel": "45.00"
+  },
+  {
+    "brand": "Nike",
+    "modelName": "Ultra Boost",
+    "size": 41,
+    "material": "Mesh",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBook",
+    "ankleSupport": true,
+    "comfortScore": 55,
+    "wearLevel": "12.50"
+  },
+  {
+    "brand": "Reebok",
+    "modelName": "Air Max",
+    "size": 41,
+    "material": "Leather",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBook",
+    "ankleSupport": false,
+    "comfortScore": 27.2,
+    "wearLevel": "57.00"
+  },
+  {
+    "brand": "Reebok",
+    "modelName": "Ultra Boost",
+    "size": 40,
+    "material": "Canvas",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBook",
+    "ankleSupport": true,
+    "comfortScore": 52.8,
+    "wearLevel": "18.00"
+  }
+]
