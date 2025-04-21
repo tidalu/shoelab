@@ -1,0 +1,12 @@
+{
+  "brand": "Adidas",
+  "modelName": "Ultra Boost",
+  "size": 45,
+  "material": "Canvas",
+  "durabilityLeft": 100,
+  "wornOut": false,
+  "type": "HikingBoot",
+  "ankleSupport": true,
+  "comfortScore": 68,
+  "wearLevel": "-20.00"
+}
