@@ -4,6 +4,7 @@ const chalk = require("chalk");
 const fs = require("fs");
 const path = require("path");
 const dataPath = path.join(__dirname, "data");
+const loadExistingFiles = require("./utils/loadExistingUserData");
 
 const ShoeFactory = require("./classes/ShoeFactory");
 const AthleteProfile = require("./classes/AthleteProfile");
@@ -16,33 +17,6 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-async function loadExistingFiles() {
-    const existingFiles = fs
-  .readdirSync(dataPath)
-  .filter((file) => file.endsWith("_profile.json"));
-  if (existingFiles.length === 0) return null;
-
-  console.log("\n📂 Existing profiles found:");
-
-  existingFiles.forEach((file, i) =>
-    console.log(`${i + 1}. ${file.replace("_profile.json", "")}`)
-  );
-
-  const index = await askQuestion(
-    "\n🔁 Load a profile? Enter number or press Enter to skip: "
-  );
-  if (!index) return null;
-
-  const name = existingFiles[parseInt(index) - 1].replace("_profile.json", "");
-  const profile = loadJSON(`${name}_profile.json`);
-  return new AthleteProfile(
-    profile.name,
-    profile.footSize,
-    profile.preferredTerrain,
-    profile.activityLevel,
-    profile.preferredType
-  );
-}
 
 function saveShoeData(data) {
   fs.writeFileSync("shoeData.json", JSON.stringify(data, null, 2), "utf-8");
