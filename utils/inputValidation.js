@@ -12,3 +12,12 @@ function validateFootSize(footSize) {
     }
     return parsed;
 }
+
+function validateTerrain(terrain) {
+    const normalized = terrain.toLowerCase();
+    if (!validTerrains.includes(normalized)) {
+        throw new Error(`Invalid terrain. Must be one of: ${validTerrains.join(', ')}`);
+    }
+}
+
+
