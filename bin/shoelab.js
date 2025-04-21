@@ -97,7 +97,7 @@ program
     console.log("\n📊 Recommending shoes...")
     const ranked = RecommendationEngine.recommend(profile, shoes);
 //   console.log(ranked, "ranked shoes");
-  ranked.slice(0, 3).forEach((r, i) => {
+    ranked.slice(0, 3).forEach((r, i) => {
     console.log(`\n#${i + 1} 🥇 Score: ${r.score}`);
     console.table(r.shoe);
   });
