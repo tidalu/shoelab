@@ -1,13 +1,28 @@
 const fs = require("fs");
+const path = require("path");
 
+const { activeUser } = require("../utils/getActiveUser.js");
 
-function loadShoeData() {
-  try {
-    const data = fs.readFileSync("shoeData.json", "utf-8");
-    return JSON.parse(data);
-  } catch (error) {
-    return {};
-  }
+function getUserShoeDataPath() {
+  const user = activeUser();
+  return path.join(__dirname, `../data/${user.name}_userShoeData.json`);
 }
 
-module.exports = loadShoeData;
+function loadShoeData() {
+  const filePath = getUserShoeDataPath();
+  if (!fs.existsSync(filePath)) return {};
+  const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  console.log("Loaded shoe data:", data);
+  return data;
+}
+
+function saveShoeData(newData) {
+  const filePath = getUserShoeDataPath();
+  console.log("Saving shoe data:", newData);
+  fs.writeFileSync(filePath, JSON.stringify(newData, null, 2));
+}
+
+module.exports = {
+  loadShoeData,
+  saveShoeData,
+};
