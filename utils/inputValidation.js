@@ -21,3 +21,34 @@ function validateTerrain(terrain) {
 }
 
 
+function validateActivityLevel(level) {
+    const normalized = level.toLowerCase();
+    if (!validActivityLevels.includes(normalized)) {
+      throw new Error(`Activity level must be one of: ${validActivityLevels.join(", ")}`);
+    }
+    return normalized;
+  }
+
+  function validateDistance(distance) {
+    const parsed = parseFloat(distance);
+    if (isNaN(parsed) || parsed < minDistance) {
+      throw new Error(`Distance must be a number greater than or equal to ${minDistance} km.`);
+    }
+    return parsed;
+  }
+
+  function validateSelection(index, max) {
+    const parsed = parseInt(index);
+    if (isNaN(parsed) || parsed < 1 || parsed > max) {
+      throw new Error(`Selection must be a number between 1 and ${max}.`);
+    }
+    return parsed;
+  }
+
+  module.exports = {
+    validateFootSize,
+    validateTerrain,
+    validateActivityLevel,
+    validateDistance,
+    validateSelection
+  };
