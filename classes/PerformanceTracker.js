@@ -3,6 +3,27 @@ class PerformanceTracker {
         this.logs= [];
     }
 
+    static calculateWearLevel(totalDistance, durabilityLeft) {
+        return (totalDistance / durabilityLeft) * 100;
+    }
+
+    static trackRun(shoeData, selectedShoe, distanceRan) {
+        if (!shoeData[selectedShoe.modelName]) {
+            shoeData[selectedShoe.modelName] = {
+                totalDistance: 0,
+                durabilityLeft: selectedShoe.durabilityLeft,
+                wearLevel: 0,
+            };
+        }
+        shoeData[selectedShoe.modelName].totalDistance += distanceRan;
+        shoeData[selectedShoe.modelName].durabilityLeft -= distanceRan;
+
+        const wearLevel = PerformanceTracker.calculateWearLevel(
+            shoeData[selectedShoe.modelName].totalDistance,
+            selectedShoe.durabilityLeft
+        );
+        shoeData[selectedShoe.modelName].wearLevel = wearLevel.toFixed(2);
+    }
 
     logStep(athlete, shoe, stepNumber) {
         this.logs.push({
@@ -14,8 +35,10 @@ class PerformanceTracker {
             stepNumber, 
             wearLevel : shoe.wearLevel.toFixed(2),
             comfortScore : shoe.getComfortScore().toFixed(2),
-    })
+        })
     }
+
+
 
 
     simulateAndTrack(athlete, shoe, steps = 10) {
@@ -29,6 +52,7 @@ class PerformanceTracker {
     getLogs() {
         return this.logs
     }
+
 
     printLogs() {
         console.table(this.logs, [
