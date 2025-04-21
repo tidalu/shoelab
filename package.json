@@ -5,6 +5,10 @@
   "keywords": [
     "shoes"
   ],
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/tidalu/shoelab.git"
+},
   "bin": {
     "shoelab": "./bin/shoelab.js"
   },
