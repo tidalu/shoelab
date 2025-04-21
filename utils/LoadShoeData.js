@@ -12,13 +12,11 @@ function loadShoeData() {
   const filePath = getUserShoeDataPath();
   if (!fs.existsSync(filePath)) return {};
   const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-  console.log("Loaded shoe data:", data);
   return data;
 }
 
 function saveShoeData(newData) {
   const filePath = getUserShoeDataPath();
-  console.log("Saving shoe data:", newData);
   fs.writeFileSync(filePath, JSON.stringify(newData, null, 2));
 }
 

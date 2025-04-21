@@ -1,8 +1,6 @@
 class RecommendationEngine {
     static recommend(athlete, shoes) {
-        // console.log('recommendation engine shoes', shoes)
         const recommendations = shoes.map(shoe =>{
-            // console.log('shoe in recommendation engine', shoe)
 
             let score = 0;
 
@@ -20,9 +18,6 @@ class RecommendationEngine {
             }
 
             //activity level
-            
-            console.log('intense and durability', shoe.baseDurability, athlete.activityLevel, score)
-            
             if( athlete.activityLevel === 'intense' && shoe.baseDurability >= 150) {
                 score += 15;
             }

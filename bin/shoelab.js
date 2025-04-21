@@ -185,10 +185,8 @@ program
         shoeData = loadShoeData();
         if (!isNaN(index) && allModels[index - 1]) {
           const deletedModel = allModels[index - 1];
-          console.log("deleted model", shoeData[deletedModel], shoeData);
           delete shoeData[deletedModel];
           console.log(`🗑️ Deleted shoe: ${deletedModel}`);
-            console.log("shoe data", shoeData);
           saveShoeData(shoeData);
         } else {
           console.log("❌ Invalid selection. No shoe deleted.");
@@ -223,7 +221,6 @@ async function runAction ()  {
       await askQuestion("🏃‍♂️ How many kilometers did you run? ")
     );
     let selectedShoe = reviveShoes(getActiveUserSelectedShoe());
-    console.log(selectedShoe , "selected shoe");
 
     
     if (distanceRan > 0) {
