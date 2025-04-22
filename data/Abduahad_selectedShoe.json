@@ -1,12 +1,12 @@
 {
-  "brand": "Adidas",
-  "modelName": "Ultra Boost",
-  "size": 40,
-  "material": "Synthetic",
-  "durabilityLeft": 61,
+  "brand": "Merrell",
+  "modelName": "Hoka One One",
+  "size": 35,
+  "material": "Mesh",
+  "durabilityLeft": 84,
   "wornOut": false,
   "type": "RunningShoe",
-  "cushioningLevel": "High",
-  "comfortScore": 81,
-  "wearLevel": "0.00"
+  "cushioningLevel": "Medium",
+  "comfortScore": 94,
+  "wearLevel": "-50.00"
 }
