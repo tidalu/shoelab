@@ -10,25 +10,22 @@ const ShoeFactory = require("../classes/ShoeFactory");
 const AthleteProfile = require("../classes/AthleteProfile");
 const PerformanceTracker = require("../classes/PerformanceTracker");
 const RecommendationEngine = require("../classes/RecommendationEngine");
-const { saveJSON, loadJSON } = require("../utils/FileManager");
+const { saveJSON } = require("../utils/FileManager");
 const { askQuestion } = require("../utils/askQuestion");
 const loadExistingFiles = require("../utils/loadExistingUserData");
 const { loadShoeData, saveShoeData } = require("../utils/LoadShoeData");
-const reviveShoes = require("../utils/reviveShoes");
+const { loadUserContext } = require("../utils/loadUserContext");
 const {
-  getActiveUserProfile,
-  getActiveUserShoes,
-  getActiveUserSelectedShoe,
-  activeUser,
-} = require("../utils/getActiveUser");
+  validateFootSize,
+  validateTerrain,
+  validateActivityLevel,
+  validateDistance,
+  validateSelection,
+} = require("../utils/inputValidation");
 const visualizeWearLevel = require("../utils/visualizeWearLevel");
 
 const program = new Command();
 let shoeData = loadShoeData();
-let shoes = [];
-let selectedShoe = null;
-let profile = null;
-let finalName = "";
 
 program
   .command("init")
@@ -43,15 +40,23 @@ program
     profile = await loadExistingFiles();
     if (!profile) {
       const name = await askQuestion("👤 What's your name? ");
-      const footSize = parseFloat(
-        await askQuestion("📏 Your foot size (EU)? ")
-      );
-      const preferredTerrain = await askQuestion(
-        "🌍 Preferred terrain (trail/rocky/mud)? "
-      );
-      const activityLevel = await askQuestion(
-        "🔥 Activity level (light/moderate/intense)? "
-      );
+      let footSize, preferredTerrain, activityLevel;
+      while (true) {
+        try {
+          footSize = validateFootSize(
+            await askQuestion("📏 Your foot size (EU, 30-50)? ")
+          );
+          preferredTerrain = validateTerrain(
+            await askQuestion("🌍 Preferred terrain (trail, rocky, mud)? ")
+          );
+          activityLevel = validateActivityLevel(
+            await askQuestion("🔥 Activity level (light, moderate, intense)? ")
+          );
+          break;
+        } catch (error) {
+          console.log(chalk.red(`❌ ${error.message}`));
+        }
+      }
 
       profile = new AthleteProfile(
         name,
@@ -73,6 +78,7 @@ program
   .command("generate")
   .description("Generate shoes")
   .action(async () => {
+    const { profile } = loadUserContext(true, false, false);
     const spinner = ora("🔧 Generating shoes...").start();
     await new Promise((r) => setTimeout(r, 1000));
     shoes = ShoeFactory.generateMany("RunningShoe", 5).concat(
@@ -94,8 +100,7 @@ program
     );
     if (saveShoeList.toLowerCase() === "yes") {
       const shoeList = shoes.map((shoe) => shoe.getDetailedInfo());
-      const active = activeUser();
-      finalName = active.name;
+      finalName = profile.name;
       saveJSON(`${finalName}_shoes.json`, shoeList);
       console.log(chalk.green("Shoes saved successfully!"));
     }
@@ -111,53 +116,49 @@ program
   .command("recommend")
   .description("Recommend shoes")
   .action(async () => {
-    const recommendSpinner = ora("📊 Analyzing profile and finding the best matches...").start();
-    await new Promise(r => setTimeout(r, 1500));
+    const recommendSpinner = ora(
+      "📊 Analyzing profile and finding the best matches..."
+    ).start();
+    await new Promise((r) => setTimeout(r, 1500));
     recommendSpinner.succeed("🔍 Recommendations ready!");
-    
-
-    const active = activeUser();
-    finalName = active.name;
-
-    // load acive user profil;e
-    profile = getActiveUserProfile();
+    let { profile, shoes, selectedShoe } = loadUserContext(true, true, false);
+    finalName = profile.name;
 
     // load user shoes
-    const savedShoes = getActiveUserShoes();
+    const savedShoes = shoes;
 
-    const ranked = RecommendationEngine.recommend(
-      profile,
-      reviveShoes(savedShoes)
-    );
+    const ranked = RecommendationEngine.recommend(profile, savedShoes);
     ranked.slice(0, 3).forEach((r, i) => {
       console.log(`\n#${i + 1} 🥇 Score: ${r.score}`);
       console.table(r.shoe);
     });
 
+    let selectedIndex;
     while (true) {
-      const selectIndex = await askQuestion(
-        "Which shoe would you like to use (1, 2, or 3)? "
-      );
-      const index = parseInt(selectIndex);
-
-      if (!isNaN(index) && index >= 1 && index <= 3 && ranked[index - 1]) {
-        selectedShoe = ranked[index - 1].shoe;
+      try {
+        selectedIndex = validateSelection(
+          await askQuestion("Which shoe would you like to use (1, 2, or 3)? "),
+          3
+        );
         break;
+      } catch (error) {
+        console.log(chalk.red(`❌ ${error.message}`));
       }
-
-      console.log("❌ Invalid selection. Please enter 1, 2, or 3.");
     }
-    saveJSON(`${profile.name}_selectedShoe.json`, selectedShoe);
+
+    selected = ranked[selectedIndex - 1].shoe;
+
+    saveJSON(`${profile.name}_selectedShoe.json`, selected);
     console.log(
-      `\n👟 You selected: ${selectedShoe.brand} ${selectedShoe.modelName}`
+      `\n👟 You selected: ${selected.brand} ${selected.modelName}`
     );
     if (!shoeData) {
       shoeData = loadShoeData();
     }
-    if (!shoeData[selectedShoe.modelName]) {
-      shoeData[selectedShoe.modelName] = {
+    if (!shoeData[selected.modelName]) {
+      shoeData[selected.modelName] = {
         totalDistance: 0,
-        durabilityLeft: selectedShoe.durabilityLeft,
+        durabilityLeft: selected.durabilityLeft,
         wearLevel: 0,
       };
     }
@@ -165,7 +166,13 @@ program
     process.exit(0);
   });
 
-program.command("run").description("Log a run").action(runAction);
+program
+  .command("run")
+  .description("Log a run")
+  .action(async () => {
+    const { profile, selectedShoe } = loadUserContext(true, false, true);
+    await runAction(profile, selectedShoe);
+  });
 
 program
   .command("delete")
@@ -185,8 +192,9 @@ program
           console.log(`${i + 1}. ${model}`);
         });
 
-        const deleteIndex = await askQuestion(
-          "Enter the number of the shoe to delete: "
+        const deleteIndex = validateSelection(
+          await askQuestion("Enter the number of the shoe to delete: "),
+          allModels.length
         );
         const index = parseInt(deleteIndex);
         shoeData = loadShoeData();
@@ -210,8 +218,9 @@ program
   .command("exit")
   .description("Exit the application")
   .action(() => {
+    const { activeUser } = loadUserContext(false, false, false);
     console.log(
-      `\n📁 Saved your profile and selected shoe for ${activeUser().name}.`
+      `\n📁 Saved your profile and selected shoe for ${activeUser.name}.`
     );
     console.log("\n✅ Done. Thanks for using ShoeLab!");
     process.exit(0);
@@ -219,14 +228,17 @@ program
 
 program.parse(process.argv);
 
-async function runAction() {
-  const animation = chalkAnimation.neon("✅ Run logged successfully!")
+async function runAction(profile, selShoes) {
+  const { shoes } = loadUserContext(false, true, false);
+  const animation = chalkAnimation.neon("✅ Run logged successfully!");
   await new Promise((resolve) => setTimeout(resolve, 2000));
   animation.stop();
   const distanceRan = parseFloat(
-    await askQuestion("🏃‍♂️ How many kilometers did you run?    ")
+    validateDistance(
+      await askQuestion("🏃‍♂️ How many kilometers did you run?    ")
+    )
   );
-  let selectedShoe = reviveShoes(getActiveUserSelectedShoe());
+  let selectedShoe = selShoes;
 
   if (distanceRan > 0) {
     if (!shoeData) {
@@ -266,7 +278,6 @@ async function runAction() {
     );
 
     PerformanceTracker.trackRun(shoeData, selectedShoe, distanceRan);
-    // saveJSON("../shoeData.json", shoeData);
     // update data
     saveShoeData(shoeData);
 
@@ -275,10 +286,9 @@ async function runAction() {
     );
     if (recommendBasedOnWearLevel.toLowerCase() === "yes") {
       console.log("\n📊 Recommending shoes based on wear level...");
-      let updatedRank = RecommendationEngine.recommend(
-        getActiveUserProfile(),
-        getActiveUserShoes()
-      ).filter((r) => r.shoe.durabilityLeft > 0);
+      let updatedRank = RecommendationEngine.recommend(profile, shoes).filter(
+        (r) => r.shoe.durabilityLeft > 0
+      );
 
       // display updated recommendations
       updatedRank.slice(0, 3).forEach((r, i) => {
@@ -287,14 +297,17 @@ async function runAction() {
       });
 
       // append the selected shoe to the shoe data
-      const newSelectedShoe = await askQuestion(
-        "Which shoe would you like to select and save? (1, 2, or 3) "
+      const newSelectedShoe = validateSelection(
+        await askQuestion(
+          "Which shoe would you like to select and save? (1, 2, or 3) "
+        ),
+        3
       );
       const index = parseInt(newSelectedShoe);
       // save
       if (!isNaN(index) && index >= 1 && index <= 3 && updatedRank[index - 1]) {
         selectedShoe = updatedRank[index - 1].shoe;
-        saveJSON(`${activeUser().name}_selectedShoe.json`, selectedShoe);
+        saveJSON(`${profile.name}_selectedShoe.json`, selectedShoe);
         console.log(
           `\n👟 You selected: ${selectedShoe.brand} ${selectedShoe.modelName}`
         );
@@ -313,7 +326,7 @@ async function runAction() {
 
       // run command action again
       console.log("Running the run command again...");
-      runAction();
+      runAction(profile, selectedShoe);
     } else {
       console.log("Exiting the run command...");
       process.exit(0);
