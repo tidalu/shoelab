@@ -5,12 +5,13 @@ const chalk = require("chalk");
 const ora = require("ora");
 const chalkAnimation = require("chalk-animation");
 const path = require("path");
+const asciichart = require("asciichart");
 const dataPath = path.join(__dirname, "../data");
 const ShoeFactory = require("../classes/ShoeFactory");
 const AthleteProfile = require("../classes/AthleteProfile");
 const PerformanceTracker = require("../classes/PerformanceTracker");
 const RecommendationEngine = require("../classes/RecommendationEngine");
-const { saveJSON } = require("../utils/FileManager");
+const { saveJSON, loadJSON } = require("../utils/FileManager");
 const { askQuestion } = require("../utils/askQuestion");
 const loadExistingFiles = require("../utils/loadExistingUserData");
 const { loadShoeData, saveShoeData } = require("../utils/LoadShoeData");
@@ -26,6 +27,14 @@ const visualizeWearLevel = require("../utils/visualizeWearLevel");
 
 const program = new Command();
 let shoeData = loadShoeData();
+const tracker = new PerformanceTracker();
+const trackerFile = path.join(__dirname, "../data/tracker.json");
+
+
+// load tracker logs 
+if(loadJSON('tracker.json')) {
+  tracker.logs = loadJSON('tracker.json').logs || [];
+}
 
 program
   .command("init")
@@ -213,6 +222,57 @@ program
     process.exit(0);
   });
 
+  program
+  .command("stats")
+  .description("Display run and shoe statistics")
+  .action(async () => {
+    const { activeUser, profile } = loadUserContext(true, false, false);
+    const stats = tracker.getRunStats();
+
+    if (stats.runLogs.length === 0) {
+      console.log(chalk.yellow("⚠️ No runs logged yet. Use the 'run' command to log a run."));
+      process.exit(0);
+    }
+
+    console.log(chalk.blue(`\n📊 Run Statistics for ${activeUser.name}`));
+    console.log(`Total Distance Run: ${stats.totalDistance.toFixed(2)} km`);
+    console.log(`Total Runs: ${stats.runLogs.length}`);
+
+    console.log("\n📋 Run History:");
+    tracker.printLogs();
+
+    console.log("\n👟 Shoe Statistics:");
+    console.table(Object.entries(stats.runsByShoe).map(([model, data]) => ({
+      Shoe: model,
+      "Total Distance (km)": data.totalDistance.toFixed(2),
+      Runs: data.runs,
+      "Wear Level (%)": data.wearLevel.toFixed(2)
+    })));
+
+    console.log("\n📈 Shoe Wear Level Chart:");
+    const wearData = Object.values(stats.runsByShoe).map(data => data.wearLevel);
+    const config = {
+      height: 10,
+      colors: [asciichart.blue]
+    };
+    console.log(asciichart.plot([wearData], {
+      ...config,
+      labels: Object.keys(stats.runsByShoe)
+    }));
+
+    const showRunHistoryChart = await askQuestion("Would you like to see a run distance history chart? (yes/no) ");
+    if (showRunHistoryChart.toLowerCase() === "yes") {
+      console.log("\n📈 Run Distance History:");
+      const distanceData = stats.runLogs.map(log => log.distance);
+      console.log(asciichart.plot([distanceData], {
+        ...config,
+        labels: stats.runLogs.map(log => new Date(log.timestamp).toLocaleDateString())
+      }));
+    }
+
+    process.exit(0);
+  });
+
 // end words
 program
   .command("exit")
@@ -254,11 +314,12 @@ async function runAction(profile, selShoes) {
     }
 
     shoeData[selectedShoe.modelName].totalDistance += distanceRan;
-    shoeData[selectedShoe.modelName].durabilityLeft -= distanceRan;
+  shoeData[selectedShoe.modelName].durabilityLeft = Math.max(0, shoeData[selectedShoe.modelName].durabilityLeft - distanceRan);
+
 
     const wearLevel = PerformanceTracker.calculateWearLevel(
       shoeData[selectedShoe.modelName].totalDistance,
-      selectedShoe.durabilityLeft
+      selectedShoe.durabilityLeft,
     );
     shoeData[selectedShoe.modelName].wearLevel = wearLevel.toFixed(2);
 
@@ -278,6 +339,7 @@ async function runAction(profile, selShoes) {
     );
 
     PerformanceTracker.trackRun(shoeData, selectedShoe, distanceRan);
+      tracker.logRun(profile, selectedShoe, distanceRan, profile.preferredTerrain);
     // update data
     saveShoeData(shoeData);
 
