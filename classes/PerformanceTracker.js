@@ -4,7 +4,10 @@ class PerformanceTracker {
     }
 
     static calculateWearLevel(totalDistance, durabilityLeft) {
-        return (totalDistance / durabilityLeft) * 100;
+        if (durabilityLeft <= 0) {
+            return 100; 
+        }
+        return  Math.min(100, (totalDistance / (totalDistance + durabilityLeft)) * 100);
     }
 
     static trackRun(shoeData, selectedShoe, distanceRan) {
@@ -16,29 +19,51 @@ class PerformanceTracker {
             };
         }
         shoeData[selectedShoe.modelName].totalDistance += distanceRan;
-        shoeData[selectedShoe.modelName].durabilityLeft -= distanceRan;
+        shoeData[selectedShoe.modelName].durabilityLeft = Math.max(0, shoeData[selectedShoe.modelName].durabilityLeft - distanceRan);
 
         const wearLevel = PerformanceTracker.calculateWearLevel(
             shoeData[selectedShoe.modelName].totalDistance,
-            selectedShoe.durabilityLeft
+            shoeData[selectedShoe.modelName].durabilityLeft
         );
         shoeData[selectedShoe.modelName].wearLevel = wearLevel.toFixed(2);
     }
 
-    logStep(athlete, shoe, stepNumber) {
+    logRun(athlete, shoe, distance, terrain) {
         this.logs.push({
-            athleteName : athlete.name,
-            shoeType : shoe.constructor.name,
-            shoeModel : shoe.modelName,
-            terrain : athlete.preferredTerrain,
-            activityLevel : athlete.activityLevel,
-            stepNumber, 
-            wearLevel : shoe.wearLevel.toFixed(2),
-            comfortScore : shoe.getComfortScore().toFixed(2),
-        })
+            athleteName: athlete.name,
+            shoeType: shoe.constructor.name,
+            shoeModel: shoe.modelName,
+            terrain: terrain,
+            activityLevel: athlete.activityLevel,
+            distance: distance,
+            wearLevel: shoe.wearLevel.toFixed(2),
+            comfortScore: shoe.getComfortScore().toFixed(2),
+            timestamp: new Date().toISOString()
+        });
     }
 
+    getRunStats() {
+        const totalDistance = this.logs.reduce((sum, log) => sum + log.distance, 0);
+        const runsByShoe = {};
+        this.logs.forEach(log => {
+            if (!runsByShoe[log.shoeModel]) {
+                runsByShoe[log.shoeModel] = {
+                    totalDistance: 0,
+                    runs: 0,
+                    wearLevel: parseFloat(log.wearLevel)
+                };
+            }
+            runsByShoe[log.shoeModel].totalDistance += log.distance;
+            runsByShoe[log.shoeModel].runs += 1;
+            runsByShoe[log.shoeModel].wearLevel = parseFloat(log.wearLevel);
+        });
 
+        return {
+            totalDistance,
+            runsByShoe,
+            runLogs: this.logs
+        };
+    }
 
 
     simulateAndTrack(athlete, shoe, steps = 10) {
@@ -60,10 +85,11 @@ class PerformanceTracker {
             'shoeModel',
             'terrain',
             'activityLevel',
-            'stepNumber',
+            'distance',
             'wearLevel',
-            'comfortScore'
-        ])
+            'comfortScore',
+            'timestamp'
+        ]);
     }
 }
 
