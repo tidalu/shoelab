@@ -1,0 +1,7 @@
+{
+  "name": "atiko",
+  "footSize": 50,
+  "preferredTerrain": "trail",
+  "activityLevel": "light",
+  "preferredShoeType": "RunningShoe"
+}
