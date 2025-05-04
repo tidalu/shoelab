@@ -1,3 +1,61 @@
+## 41499e8 - Tidalu, 2025-04-22 : Refactor PerformanceTracker to improve wear level calculation and enhance run logging functionality
+ classes/PerformanceTracker.js | 58 +++++++++++++++++++++++++++++++------------
+ 1 file changed, 42 insertions(+), 16 deletions(-)
+
+## 236e998 - Tidalu, 2025-04-22 : Add stats command to display run and shoe statistics with visualizations
+ bin/shoelab.js | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 65 insertions(+), 3 deletions(-)
+
+## 2c45897 - Tidalu, 2025-04-22 : dynamic data
+ data/Abduahad_profile.json      |   3 +-
+ data/Abduahad_selectedShoe.json |  16 ++---
+ data/Abduahad_shoes.json        | 148 ++++++++++++++++++++--------------------
+ data/Abduahad_userShoeData.json |   1 +
+ data/activeUser.json            |   2 +-
+ 5 files changed, 85 insertions(+), 85 deletions(-)
+
+## 0330567 - Tidalu, 2025-04-22 : install asciichart dependency
+ package-lock.json | 7 +++++++
+ package.json      | 7 ++++---
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+## e7de644 - Tidalu, 2025-04-22 : dynamic generated data
+ data/Johan_profile.json      |   6 +++
+ data/Johan_selectedShoe.json |  12 +++++
+ data/Johan_shoes.json        | 122 +++++++++++++++++++++++++++++++++++++++++++
+ data/Johan_userShoeData.json |   1 +
+ data/activeUser.json         |   2 +-
+ data/atiko_profile.json      |   7 +++
+ 6 files changed, 149 insertions(+), 1 deletion(-)
+
+## 22ca983 - Tidalu, 2025-04-22 : refactor imrovement
+ bin/shoelab.js | 147 +++++++++++++++++++++++++++++++--------------------------
+ 1 file changed, 80 insertions(+), 67 deletions(-)
+
+## bae71d8 - Tidalu, 2025-04-22 : add loadUserContext function to manage user profiles and shoes
+ utils/loadUserContext.js | 54 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 54 insertions(+)
+
+## f833009 - Tidalu, 2025-04-22 : add validation for activity level, distance, and selection
+ utils/inputValidation.js | 31 +++++++++++++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+
+## cf74ca6 - Tidalu, 2025-04-22 : add terrain validation
+ utils/inputValidation.js | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+## 4e885a7 - Tidalu, 2025-04-22 : add input validation for foot size
+ utils/inputValidation.js | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+## 72bf5f9 - Tidalu, 2025-04-22 : add repository information to package.json
+ package.json | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+## 064385c - Tidalu, 2025-04-22 : update commit history
+ commit-history.md | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
 ## dfc6cf4 - Tidalu, 2025-04-22 : remove shoe data JSON file
  shoeData.json | 17 -----------------
  1 file changed, 17 deletions(-)
