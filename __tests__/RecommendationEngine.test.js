@@ -11,7 +11,7 @@ describe("RecommendationEngine", () => {
       "Ulugbek",
       44,
       "trail",
-      "modetarate",
+      "moderate",
       "RunningShoe"
     );
     runningShoe = new RunningShoe("Nike", "Air Max", 44, "Mesh", 150, "High");

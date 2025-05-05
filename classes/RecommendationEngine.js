@@ -12,9 +12,9 @@ class RecommendationEngine {
             // terain match
 
             if(athlete.preferredTerrain === 'trail' && shoe.constructor.name === 'RunningShoe') {
-                score += 20;
+                score += 30;
             } else if (['rocky', 'mud'].includes(athlete.preferredTerrain) && shoe.constructor.name === 'HikingBoot') {
-                score += 20;
+                score += 30;
             }
 
             //activity level
@@ -29,7 +29,7 @@ class RecommendationEngine {
             }
 
             // wear penalty 
-            const wearPenalty = Math.floor(parseFloat(shoe.wearLevel) * 0.5);
+            const wearPenalty = Math.floor(parseFloat(shoe.wearLevel));
             score -= wearPenalty;
 
             return {
