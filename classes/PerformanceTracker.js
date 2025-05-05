@@ -38,7 +38,7 @@ class PerformanceTracker {
             distance: distance,
             wearLevel: shoe.wearLevel.toFixed(2),
             comfortScore: shoe.getComfortScore().toFixed(2),
-            timestamp: new Date().toISOString()
+            timestamp: new Date()
         });
     }
 

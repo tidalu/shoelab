@@ -18,7 +18,7 @@ describe("PerformanceTracker", () => {
 
     test('calculateWearLevel should compute wear level based on distance correctly', ()=> {
         const wearLevel = PerformanceTracker.calculateWearLevel(50, 100);
-        expect(wearLevel).toBe(33.33, 2);
+        expect(wearLevel.toFixed(2)).toBe(String(33.33), 2);
     })
 
     test('calculateWearLevel should cap at 100 percent for zero durability', () =>{
@@ -39,17 +39,21 @@ describe("PerformanceTracker", () => {
     test('logRun should store the run data with timeStamp', () => {
         tracker.logRun(athlete, shoe, 5, 'trail');
         const log = tracker.getLogs()[0]
+        console.log(log, "log")
         expect(log).toMatchObject({
             athleteName: "Kacper",
+            shoeType: "RunningShoe",
             shoeModel: "Air Max",
-            distance: 5,
             terrain: "trail",
-            timeStamp: expect.any(String),
+            activityLevel: "moderate",
+            distance: 5,
+            wearLevel: expect.any(String),
             comfortScore: expect.any(String),
-            timeStamp: expect.any(String),
+            timestamp: expect.any(Date),
         })
 
-        expect(new Date(log.timeStamp).toISOString()).toBe(log.timeStamp);
+        expect(log.timestamp instanceof Date).toBe(true);
+
     })
 
 
