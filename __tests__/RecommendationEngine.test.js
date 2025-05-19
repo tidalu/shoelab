@@ -48,7 +48,6 @@ describe("RecommendationEngine", () => {
       runningShoe,
       hikingBoot,
     ]);
-    console.log(recommendations, "recommendations");
     expect(recommendations[0].shoe.type).toBe("RunningShoe");
     expect(recommendations[0].score).toBeGreaterThan(recommendations[1].score);
   });
