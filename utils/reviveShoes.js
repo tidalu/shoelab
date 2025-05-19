@@ -13,6 +13,9 @@ const { RunningShoe, HikingBoot } = require("../classes/ShoeTypes");
 
 function reviveShoe(shoe) {
   let revived;
+  if (shoe instanceof RunningShoe || shoe instanceof HikingBoot) {
+    return shoe;
+  }
   switch (shoe.type) {
     case "RunningShoe":
       revived = new RunningShoe();
