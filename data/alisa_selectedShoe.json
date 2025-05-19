@@ -1,0 +1,12 @@
+{
+  "brand": "Merrell",
+  "modelName": "Oboz",
+  "size": 30,
+  "material": "Coolmax",
+  "durabilityLeft": 100,
+  "wornOut": false,
+  "type": "RunningShoe",
+  "cushioningLevel": "Low",
+  "comfortScore": 100,
+  "wearLevel": 100
+}

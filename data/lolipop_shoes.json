@@ -1,0 +1,122 @@
+[
+  {
+    "brand": "Mizuno",
+    "modelName": "Vasque",
+    "size": 41,
+    "material": "PU",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Low",
+    "comfortScore": 120,
+    "wearLevel": 100
+  },
+  {
+    "brand": "Altra",
+    "modelName": "La Sportiva",
+    "size": 45,
+    "material": "Ortholite",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Low",
+    "comfortScore": 100,
+    "wearLevel": 100
+  },
+  {
+    "brand": "Oboz",
+    "modelName": "Air Max",
+    "size": 46,
+    "material": "Polyester",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 190,
+    "wearLevel": 100
+  },
+  {
+    "brand": "Salomon",
+    "modelName": "Fresh Foam",
+    "size": 31,
+    "material": "Primaloft",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 110,
+    "wearLevel": 100
+  },
+  {
+    "brand": "Asics",
+    "modelName": "Ultra Boost",
+    "size": 33,
+    "material": "Cotton",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Low",
+    "comfortScore": 100,
+    "wearLevel": 100
+  },
+  {
+    "brand": "Scarpa",
+    "modelName": "Vasque",
+    "size": 32,
+    "material": "Mesh",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 100
+  },
+  {
+    "brand": "Keen",
+    "modelName": "Timberland",
+    "size": 47,
+    "material": "Gore-Tex",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 100
+  },
+  {
+    "brand": "Altra",
+    "modelName": "Vasque",
+    "size": 38,
+    "material": "Mesh",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 100
+  },
+  {
+    "brand": "Columbia",
+    "modelName": "Scarpa",
+    "size": 46,
+    "material": "Phylon",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": false,
+    "comfortScore": 50,
+    "wearLevel": 100
+  },
+  {
+    "brand": "Nike",
+    "modelName": "Hurricane",
+    "size": 40,
+    "material": "3M Thinsulate",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 100
+  }
+]

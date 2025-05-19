@@ -1,0 +1,7 @@
+{
+  "name": "mode",
+  "footSize": 30,
+  "preferredTerrain": "trail",
+  "activityLevel": "moderate",
+  "preferredShoeType": "RunningShoe"
+}

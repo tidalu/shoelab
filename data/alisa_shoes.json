@@ -1,0 +1,122 @@
+[
+  {
+    "brand": "Diadora",
+    "modelName": "Clyde",
+    "size": 39,
+    "material": "Primaloft",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 160,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Timberland",
+    "modelName": "Brooks",
+    "size": 41,
+    "material": "PU",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Low",
+    "comfortScore": 100,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Oboz",
+    "modelName": "Timberland",
+    "size": 41,
+    "material": "Canvas",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 190,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Merrell",
+    "modelName": "Oboz",
+    "size": 30,
+    "material": "Coolmax",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Low",
+    "comfortScore": 150,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "K-Swiss",
+    "modelName": "Vapor",
+    "size": 33,
+    "material": "TPU",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 110,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Clarks",
+    "modelName": "Fresh Foam",
+    "size": 35,
+    "material": "Neoprene",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 0
+  },
+  {
+    "brand": "UGG",
+    "modelName": "Ultra Boost",
+    "size": 37,
+    "material": "Neoprene",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": false,
+    "comfortScore": 50,
+    "wearLevel": 0
+  },
+  {
+    "brand": "Dr. Martens",
+    "modelName": "La Sportiva",
+    "size": 31,
+    "material": "Polyester",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 0
+  },
+  {
+    "brand": "Oboz",
+    "modelName": "Lowa",
+    "size": 39,
+    "material": "Polyester",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 0
+  },
+  {
+    "brand": "Puma",
+    "modelName": "Brooks",
+    "size": 33,
+    "material": "TPU",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 0
+  }
+]
