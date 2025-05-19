@@ -28,12 +28,11 @@ const visualizeWearLevel = require("../utils/visualizeWearLevel");
 const program = new Command();
 let shoeData = loadShoeData();
 const tracker = new PerformanceTracker();
-const trackerFile = path.join(__dirname, "../data/tracker.json");
 
-
-// load tracker logs 
-if(loadJSON('tracker.json')) {
-  tracker.logs = loadJSON('tracker.json').logs || [];
+// load tracker logs
+const trackerFile = path.join(dataPath, "tracker.json");
+if (loadJSON(trackerFile)) {
+  tracker.logs = loadJSON(trackerFile).logs || [];
 }
 
 program
@@ -55,9 +54,10 @@ program
           footSize = validateFootSize(
             await askQuestion("📏 Your foot size (EU, 30-50)? ")
           );
-          preferredTerrain = validateTerrain(
-            await askQuestion("🌍 Preferred terrain (trail, rocky, mud)? ")
+          preferredTerrain = await askQuestion(
+            "🌍 Preferred terrain (trail, rocky, mud)? "
           );
+
           activityLevel = validateActivityLevel(
             await askQuestion("🔥 Activity level (light, moderate, intense)? ")
           );
@@ -135,7 +135,10 @@ program
 
     // load user shoes
     const savedShoes = shoes;
-
+    if (!savedShoes) {
+      console.log(chalk.red("❌ No shoes found. Please generate shoes first."));
+      process.exit(0);
+    }
     const ranked = RecommendationEngine.recommend(profile, savedShoes);
     ranked.slice(0, 3).forEach((r, i) => {
       console.log(`\n#${i + 1} 🥇 Score: ${r.score}`);
@@ -158,9 +161,7 @@ program
     selected = ranked[selectedIndex - 1].shoe;
 
     saveJSON(`${profile.name}_selectedShoe.json`, selected);
-    console.log(
-      `\n👟 You selected: ${selected.brand} ${selected.modelName}`
-    );
+    console.log(`\n👟 You selected: ${selected.brand} ${selected.modelName}`);
     if (!shoeData) {
       shoeData = loadShoeData();
     }
@@ -180,6 +181,14 @@ program
   .description("Log a run")
   .action(async () => {
     const { profile, selectedShoe } = loadUserContext(true, false, true);
+    if (!selectedShoe) {
+      console.log(
+        chalk.red(
+          "❌ No shoe selected. Please use the 'recommend' command first. and select a shoe."
+        )
+      );
+      process.exit(0);
+    }
     await runAction(profile, selectedShoe);
   });
 
@@ -222,15 +231,20 @@ program
     process.exit(0);
   });
 
-  program
+program
   .command("stats")
   .description("Display run and shoe statistics")
   .action(async () => {
     const { activeUser, profile } = loadUserContext(true, false, false);
+    console.log(profile);
     const stats = tracker.getRunStats();
-
+    console.log(stats);
     if (stats.runLogs.length === 0) {
-      console.log(chalk.yellow("⚠️ No runs logged yet. Use the 'run' command to log a run."));
+      console.log(
+        chalk.yellow(
+          "⚠️ No runs logged yet. Use the 'run' command to log a run."
+        )
+      );
       process.exit(0);
     }
 
@@ -242,32 +256,44 @@ program
     tracker.printLogs();
 
     console.log("\n👟 Shoe Statistics:");
-    console.table(Object.entries(stats.runsByShoe).map(([model, data]) => ({
-      Shoe: model,
-      "Total Distance (km)": data.totalDistance.toFixed(2),
-      Runs: data.runs,
-      "Wear Level (%)": data.wearLevel.toFixed(2)
-    })));
+    console.table(
+      Object.entries(stats.runsByShoe).map(([model, data]) => ({
+        Shoe: model,
+        "Total Distance (km)": data.totalDistance.toFixed(2),
+        Runs: data.runs,
+        "Wear Level (%)": data.wearLevel.toFixed(2),
+      }))
+    );
 
     console.log("\n📈 Shoe Wear Level Chart:");
-    const wearData = Object.values(stats.runsByShoe).map(data => data.wearLevel);
+    const wearData = Object.values(stats.runsByShoe).map(
+      (data) => data.wearLevel
+    );
     const config = {
       height: 10,
-      colors: [asciichart.blue]
+      colors: [asciichart.blue],
     };
-    console.log(asciichart.plot([wearData], {
-      ...config,
-      labels: Object.keys(stats.runsByShoe)
-    }));
+    console.log(
+      asciichart.plot([wearData], {
+        ...config,
+        labels: Object.keys(stats.runsByShoe),
+      })
+    );
 
-    const showRunHistoryChart = await askQuestion("Would you like to see a run distance history chart? (yes/no) ");
+    const showRunHistoryChart = await askQuestion(
+      "Would you like to see a run distance history chart? (yes/no) "
+    );
     if (showRunHistoryChart.toLowerCase() === "yes") {
       console.log("\n📈 Run Distance History:");
-      const distanceData = stats.runLogs.map(log => log.distance);
-      console.log(asciichart.plot([distanceData], {
-        ...config,
-        labels: stats.runLogs.map(log => new Date(log.timestamp).toLocaleDateString())
-      }));
+      const distanceData = stats.runLogs.map((log) => log.distance);
+      console.log(
+        asciichart.plot([distanceData], {
+          ...config,
+          labels: stats.runLogs.map((log) =>
+            new Date(log.timestamp).toLocaleDateString()
+          ),
+        })
+      );
     }
 
     process.exit(0);
@@ -314,12 +340,14 @@ async function runAction(profile, selShoes) {
     }
 
     shoeData[selectedShoe.modelName].totalDistance += distanceRan;
-  shoeData[selectedShoe.modelName].durabilityLeft = Math.max(0, shoeData[selectedShoe.modelName].durabilityLeft - distanceRan);
-
+    shoeData[selectedShoe.modelName].durabilityLeft = Math.max(
+      0,
+      shoeData[selectedShoe.modelName].durabilityLeft - distanceRan
+    );
 
     const wearLevel = PerformanceTracker.calculateWearLevel(
       shoeData[selectedShoe.modelName].totalDistance,
-      selectedShoe.durabilityLeft,
+      selectedShoe.durabilityLeft
     );
     shoeData[selectedShoe.modelName].wearLevel = wearLevel.toFixed(2);
 
@@ -339,7 +367,12 @@ async function runAction(profile, selShoes) {
     );
 
     PerformanceTracker.trackRun(shoeData, selectedShoe, distanceRan);
-      tracker.logRun(profile, selectedShoe, distanceRan, profile.preferredTerrain);
+    tracker.logRun(
+      profile,
+      selectedShoe,
+      distanceRan,
+      profile.preferredTerrain
+    );
     // update data
     saveShoeData(shoeData);
 
