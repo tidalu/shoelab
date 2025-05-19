@@ -18,7 +18,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "node app.js",
-    "test": "jest --watch"
+    "test": "jest"
   },
   "dependencies": {
     "asciichart": "^1.5.25",
