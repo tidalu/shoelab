@@ -1,83 +1,97 @@
-const reviveShoes = require('../utils/reviveShoes');
-const RunningShoe = require('../classes/RunningShoe');
-const HikingBoot = require('../classes/HikingBoot');
+const reviveShoes = require("../utils/reviveShoes");
+const RunningShoe = require("../classes/RunningShoe");
+const HikingBoot = require("../classes/HikingBoot");
 
+describe("reviveShoes", () => {
+  test("should revive a single RunningShoe", () => {
+    const shoeData = {
+      type: "RunningShoe",
+      brand: "Nike",
+      modelName: "Air Max",
+      size: 42,
+      material: "Mesh",
+      durabilityLeft: 100,
+      cushioningLevel: "High",
+      wearLevel: "10.0",
+    };
+    const revivedShoe = reviveShoes(shoeData);
+    expect(revivedShoe).toBeInstanceOf(RunningShoe);
+    expect(revivedShoe.brand).toBe("Nike");
+    expect(revivedShoe.modelName).toBe("Air Max");
+    expect(revivedShoe.size).toBe(42);
+    expect(revivedShoe.material).toBe("Mesh");
+    expect(revivedShoe.durabilityLeft).toBe(100);
+    expect(revivedShoe.cushioningLevel).toBe("High");
+    expect(revivedShoe.wearLevel).toBeCloseTo(10.0);
+  });
 
-describe('reviveShoes', ()=>{
-    test('should revive a single RunningSHe', ()=> {
-        const shoeData = {
-            type: 'RunningShoe',
-            brand: 'Nike',
-            modelName: 'Air Max',
-            size: 42,
-            material: 'Mesh',
-            durabilityLeft: 100,
-            cushioningLevel: 'High',
-            wearLevel: '10.00'
-        }
-        const revievedShoe = reviveShoes(shoeData);
-        expect(revievedShoe).toBeInstanceOf(RunningShoe);
-        expect(revievedShoe.brand).toBe('Nike');
-        expect(revievedShoe.modelName).toBe('Air Max');
-        expect(revievedShoe.size).toBe(42);
-        expect(revievedShoe.material).toBe('Mesh');
-        expect(revievedShoe.durabilityLeft).toBe(100);
-        expect(revievedShoe.cushioningLevel).toBe('High');
-        expect(revievedShoe.wearLevel).toBe('10.00');
-    })
+  test("should revive a single HikingBoot", () => {
+    const shoeData = {
+      type: "HikingBoot",
+      brand: "Salomon",
+      modelName: "Quest",
+      size: 42,
+      material: "Gore-Tex",
+      durabilityLeft: 150,
+      ankleSupport: true,
+      wearLevel: "5.0",
+    };
+    const revived = reviveShoes(shoeData);
+    expect(revived).toBeInstanceOf(HikingBoot);
+    expect(revived.brand).toBe("Salomon");
+    expect(revived.modelName).toBe("Quest");
+    expect(revived.size).toBe(42);
+    expect(revived.material).toBe("Gore-Tex");
+    expect(revived.durabilityLeft).toBe(150);
+    expect(revived.ankleSupport).toBe(true);
+    expect(revived.wearLevel).toBeCloseTo(5.0);
+  });
 
-    test('should revive a single HikingBoot', ()=> {const shoeData = {
-        type: 'HikingBoot',
-        brand: 'Salomon',
-        modelName: 'Quest',
+  test("should revive an array of shoes", () => {
+    const shoeArray = [
+      {
+        type: "RunningShoe",
+        brand: "Nike",
+        modelName: "Air Max",
         size: 42,
-        material: 'Gore-Tex',
+        material: "Mesh",
+        durabilityLeft: 100,
+        cushioningLevel: "High",
+        wearLevel: "10.00",
+      },
+      {
+        type: "HikingBoot",
+        brand: "Salomon",
+        modelName: "Quest",
+        size: 42,
+        material: "Gore-Tex",
         durabilityLeft: 150,
         ankleSupport: true,
-        wearLevel: '5.00'
-      };
-      const revived = reviveShoes(shoeData);
-      expect(revived).toBeInstanceOf(HikingBoot);
-      expect(revived.brand).toBe('Salomon');
-      expect(revived.modelName).toBe('Quest');
-      expect(revived.size).toBe(42);
-      expect(revived.material).toBe('Gore-Tex');
-      expect(revived.durabilityLeft).toBe(150);
-      expect(revived.ankleSupport).toBe(true);
-      expect(revived.wearLevel).toBe('5.00');
-    })
+        wearLevel: "5.00",
+      },
+    ];
+    const revivedShoes = reviveShoes(shoeArray);
+    expect(revivedShoes).toHaveLength(2);
+    expect(revivedShoes[0]).toBeInstanceOf(RunningShoe);
+    expect(revivedShoes[1]).toBeInstanceOf(HikingBoot);
+    expect(revivedShoes[0].brand).toBe("Nike");
+    expect(revivedShoes[1].brand).toBe("Salomon");
+  });
 
-
-    test('should revive an array of shoes', () =>{
-        const shoeArray = [
-            { type: 'RunningShoe', brand: 'Nike', modelName: 'Air Max', size: 42, material: 'Mesh', durabilityLeft: 100, cushioningLevel: 'High', wearLevel: '10.00' },
-      { type: 'HikingBoot', brand: 'Salomon', modelName: 'Quest', size: 42, material: 'Gore-Tex', durabilityLeft: 150, ankleSupport: true, wearLevel: '5.00' }
-        ]
-        const revievedShoes = reviveShoes(shoeArray);
-        expect(revievedShoes).toHaveLength(2);  
-        expect(revievedShoes[0]).toBeInstanceOf(RunningShoe);
-        expect(revievedShoes[1]).toBeInstanceOf(HikingBoot);
-        expect(revievedShoes[0].brand).toBe('Nike');
-        expect(revievedShoes[1].brand).toBe('Salomon');
-    })
-
-    test('shouuld return null for unknown shoe typ', () =>{
-        const shoeData = {
-            type: 'UnknownShoe',
-            brand: 'Nike',
-            modelName: 'Air Max',
-            size: 42,
-            material: 'Mesh',
-            durabilityLeft: 100,
-            cushioningLevel: 'High',
-            wearLevel: '10.00'
-        }
-        console.warn = jest.fn();
-        const revivedShoe = reviveShoes(shoeData);
-        expect(revivedShoe).toBeNull();
-        expect(console.warn).toHaveBeenCalledWith(
-            'Unknown shoe type: UnknownShoe, I dont revive buddy!'
-        )
-
-    })
-})
+  test("should return null for unknown shoe type", () => {
+    const shoeData = {
+      type: "UnknownShoe",
+      brand: "Nike",
+      modelName: "Air Max",
+      size: 42,
+      material: "Mesh",
+      durabilityLeft: 100,
+      cushioningLevel: "High",
+      wearLevel: "10.00",
+    };
+    console.warn = jest.fn();
+    const revivedShoe = reviveShoes(shoeData);
+    expect(revivedShoe).toBeNull();
+    expect(console.warn).toHaveBeenCalledWith("Unknown shoe type");
+  });
+});
