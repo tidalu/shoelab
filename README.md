@@ -46,13 +46,13 @@ ShoeLab provides the following commands:
 
 | Command | Description | Example |
 | --- | --- | --- |
-| `init` | Create or load a user profile | `node shoelab.js init` |
-| `generate` | Generate a set of shoes | `node shoelab.js generate` |
-| `recommend` | Get personalized shoe recommendations | `node shoelab.js recommend` |
-| `run` | Log a run and track shoe wear | `node shoelab.js run` |
-| `delete` | Delete a shoe from your collection | `node shoelab.js delete` |
-| `stats` | Display run history and shoe statistics with charts | `node shoelab.js stats` |
-| `exit` | Exit the application | `node shoelab.js exit` |
+| `init` | Create or load a user profile | `node bin/shoelab.js init` |
+| `generate` | Generate a set of shoes | `node bin/shoelab.js generate` |
+| `recommend` | Get personalized shoe recommendations | `node bin/shoelab.js recommend` |
+| `run` | Log a run and track shoe wear | `node bin/shoelab.js run` |
+| `delete` | Delete a shoe from your collection | `node bin/shoelab.js delete` |
+| `stats` | Display run history and shoe statistics with charts | `node bin/shoelab.js stats` |
+| `exit` | Exit the application | `node bin/shoelab.js exit` |
 
 ### Example Workflow
 
