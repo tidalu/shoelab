@@ -37,7 +37,7 @@
 4. **Run the Application**:
 
    ```bash
-   node src/shoelab.js
+   node bin/shoelab.js
    ```
 
 ## Usage
@@ -59,7 +59,7 @@ ShoeLab provides the following commands:
 1. **Initialize a Profile**:
 
    ```bash
-   node shoelab.js init
+   node bin/shoelab.js init
    ```
 
    Follow prompts to enter your name, foot size, preferred terrain, and activity level.
@@ -67,7 +67,7 @@ ShoeLab provides the following commands:
 2. **Generate Shoes**:
 
    ```bash
-   node shoelab.js generate
+   node bin/shoelab.js generate
    ```
 
    Generate 10 shoes (5 running, 5 hiking) and optionally save them.
@@ -75,7 +75,7 @@ ShoeLab provides the following commands:
 3. **Get Recommendations**:
 
    ```bash
-   node shoelab.js recommend
+   node bin/shoelab.js recommend
    ```
 
    View top 3 shoe recommendations and select one to use.
@@ -83,7 +83,7 @@ ShoeLab provides the following commands:
 4. **Log a Run**:
 
    ```bash
-   node shoelab.js run
+   node bin/shoelab.js run
    ```
 
    Enter the distance ran and view updated shoe durability and wear level.
@@ -91,7 +91,7 @@ ShoeLab provides the following commands:
 5. **View Statistics**:
 
    ```bash
-   node shoelab.js stats
+   node bin/shoelab.js stats
    ```
 
    See total distance, run history, shoe stats, and ASCII charts for wear levels and run distances.
@@ -99,7 +99,7 @@ ShoeLab provides the following commands:
 6. **Delete a Shoe**:
 
    ```bash
-   node shoelab.js delete
+   node bin/shoelab.js delete
    ```
 
    Choose a shoe to remove from your collection.
@@ -171,7 +171,7 @@ shoelab/
 │   ├── validateInput.js           # Validates user inputs
 │   ├── visualizeWearLevel.js      # Visualizes shoe wear
 ├── data/                          # Stores JSON data (profiles, shoes, tracker)
-├── src/
+├── bin/
 │   ├── shoelab.js                # Main CLI application
 ├── package.json                   # Project dependencies
 ```
