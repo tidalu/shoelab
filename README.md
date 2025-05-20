@@ -218,4 +218,5 @@ MIT License. See LICENSE for details.
 
 Built as a university OOP project to demonstrate object-oriented programming principles, including encapsulation, inheritance, polymorphism, and abstraction.
 
-**AI Assistance:**This project utilized Grok 3, built by xAI, to assist with generating documentation, including this README
+**AI Assistance:** 
+This project utilized Grok 3, built by xAI, to assist with generating documentation, including this README
