@@ -1,3 +1,170 @@
+## 52f842b - Tidalu, 2025-05-20 : refactor: enhance README with additional features, installation instructions, and testing details
+ README.md | 142 ++++++++++++++++++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 110 insertions(+), 32 deletions(-)
+
+## 8860b77 - Tidalu, 2025-05-20 : refactor:  update functionality to saveJSON method: possibilty of appending
+ utils/FileManager.js | 43 ++++++++++++++++++++++++-------------------
+ 1 file changed, 24 insertions(+), 19 deletions(-)
+
+## 93d692e - Tidalu, 2025-05-20 : refactor: add flattenLogs method, and implemented persistent run history
+ classes/PerformanceTracker.js | 74 +++++++++++++++++++++++++++++++------------
+ 1 file changed, 54 insertions(+), 20 deletions(-)
+
+## 7faa270 - Tidalu, 2025-05-20 : refactor: error handling in generate command
+ bin/shoelab.js | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+## ad4fd1c - Tidalu, 2025-05-20 : dynamic data
+ data/activeUser.json        |   2 +-
+ data/jjj_logs.json          |  35 ++++
+ data/jjj_profile.json       |   7 +
+ data/jjj_selectedShoe.json  |  12 ++
+ data/jjj_shoes.json         | 122 ++++++++++++
+ data/jjj_userShoeData.json  |   7 +
+ data/lola_profile.json      |   7 +
+ data/lola_selectedShoe.json |  12 ++
+ data/lola_shoes.json        | 122 ++++++++++++
+ data/lola_userShoeData.json |   7 +
+ data/noah_profile.json      |   7 +
+ data/noah_selectedShoe.json |  12 ++
+ data/noah_shoes.json        | 122 ++++++++++++
+ data/noah_userShoeData.json |   7 +
+ data/undefined_logs.json    | 451 ++++++++++++++++++++++++++++++++++++++++++++
+ 15 files changed, 931 insertions(+), 1 deletion(-)
+
+## 1704d30 - Tidalu, 2025-05-19 : refactor: improve shoe revival logic by returning existing instances of RunningShoe or HikingBoot
+ utils/reviveShoes.js | 3 +++
+ 1 file changed, 3 insertions(+)
+
+## 6457e71 - Tidalu, 2025-05-19 : refactor: standardize code formatting in loadExistingUserData.js and proper error handling
+ utils/loadExistingUserData.js | 45 ++++++++++++++++++++++++-------------------
+ 1 file changed, 25 insertions(+), 20 deletions(-)
+
+## a5b21d1 - Tidalu, 2025-05-19 : refactor: standardize formatting and improve code readability in input validation functions
+ utils/inputValidation.js | 80 ++++++++++++++++++++++++++----------------------
+ 1 file changed, 43 insertions(+), 37 deletions(-)
+
+## 13e5d90 - Tidalu, 2025-05-19 : refactor: fromat code
+ classes/PerformanceTracker.js | 167 ++++++++++++++++++++++--------------------
+ 1 file changed, 87 insertions(+), 80 deletions(-)
+
+## 975e352 - Tidalu, 2025-05-19 : refactor: improve tracker log loading and enhance user feedback in commands
+ bin/shoelab.js | 105 +++++++++++++++++++++++++++++++++++++--------------------
+ 1 file changed, 69 insertions(+), 36 deletions(-)
+
+## e158015 - Tidalu, 2025-05-19 : dynamic data
+ data/activeUser.json           |   2 +-
+ data/alisa_profile.json        |   6 +
+ data/alisa_selectedShoe.json   |  12 ++
+ data/alisa_shoes.json          | 122 +++++++++++
+ data/alisa_userShoeData.json   |   7 +
+ data/immmi_profile.json        |   6 +
+ data/lolipop_profile.json      |   6 +
+ data/lolipop_selectedShoe.json |  12 ++
+ data/lolipop_shoes.json        | 122 +++++++++++
+ data/lolipop_userShoeData.json |   1 +
+ data/mode_profile.json         |   7 +
+ data/mode_selectedShoe.json    |  12 ++
+ data/mode_shoes.json           | 122 +++++++++++
+ data/mode_userShoeData.json    |   7 +
+ package-lock.json              | 479 +----------------------------------------
+ package.json                   |  11 +-
+ 16 files changed, 457 insertions(+), 477 deletions(-)
+
+## 60724e2 - Tidalu, 2025-05-19 : refactor: remove debug logs from test files
+ __tests__/PerformanceTracker.test.js   | 123 ++++++++++++++++-----------------
+ __tests__/RecommendationEngine.test.js |   1 -
+ 2 files changed, 61 insertions(+), 63 deletions(-)
+
+## b523e2b - Tidalu, 2025-05-19 : refactor: initialize wearLevel with 0 to prevent from being NaN
+ classes/RunningShoe.js | 112 +++++++++++++++++++++++++++----------------------
+ 1 file changed, 61 insertions(+), 51 deletions(-)
+
+## 1aa05cb - Tidalu, 2025-05-19 : refactor: improve error handling in wearPenalty and fixing (NaN) in test
+ classes/RecommendationEngine.js | 89 ++++++++++++++++++++++-------------------
+ 1 file changed, 47 insertions(+), 42 deletions(-)
+
+## 7cf9d02 - Tidalu, 2025-05-19 : refactor: initialize wearLevel with 0 to prevent from being NaN
+ classes/HikingBoot.js | 90 +++++++++++++++++++++++++++------------------------
+ 1 file changed, 48 insertions(+), 42 deletions(-)
+
+## fd64480 - Tidalu, 2025-05-19 : refactor: improve code formatting and readability in AthleteProfile class
+ classes/AthleteProfile.js | 89 +++++++++++++++++++++++++----------------------
+ 1 file changed, 47 insertions(+), 42 deletions(-)
+
+## 72feb9e - Tidalu, 2025-05-19 : refactor: clean up reviveShoes test cases for consistency and readability
+ __tests__/reviveShoes.test.js | 166 +++++++++++++++++++++++-------------------
+ 1 file changed, 90 insertions(+), 76 deletions(-)
+
+## 03f8128 - Tidalu, 2025-05-19 : refactor: format and clean up RecommendationEngine test cases for better readability
+ __tests__/RecommendationEngine.test.js | 49 +++++++++++++++++-----------------
+ 1 file changed, 25 insertions(+), 24 deletions(-)
+
+## af1d77f - Tidalu, 2025-05-19 : fix: update test script to remove watch mode from jest in package.json
+ package.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+## 2db94aa - Tidalu, 2025-05-19 : refactor: improve shoe revival logic
+ utils/reviveShoes.js | 25 +++++++++++++++++++++----
+ 1 file changed, 21 insertions(+), 4 deletions(-)
+
+## 78bd9ea - Tidalu, 2025-05-19 : refactor: simplify wear level management and improve durability calculation
+ classes/Shoe.js | 111 ++++++++++++++++++++++++--------------------------------
+ 1 file changed, 48 insertions(+), 63 deletions(-)
+
+## e853115 - Tidalu, 2025-05-05 : fix: correct spelling and adjust scoring logic in RecommendationEngine
+ __tests__/RecommendationEngine.test.js | 2 +-
+ classes/RecommendationEngine.js        | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+## 3f51645 - Tidalu, 2025-05-05 : fix: update wear level calculation and log timestamp format in PerformanceTracker
+ __tests__/PerformanceTracker.test.js | 14 +++++++++-----
+ classes/PerformanceTracker.js        |  2 +-
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+## e305be3 - Tidalu, 2025-05-04 : test for revieve shoues
+ __tests__/reviveShoes.test.js   | 83 ++++++++++++++++++++++++++++++++++++++
+ __tests__/validateInput.test.js | 88 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 171 insertions(+)
+
+## 20c0762 - Tidalu, 2025-05-04 : test for recommendatkon=engine
+ __tests__/RecommendationEngine.test.js | 88 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 88 insertions(+)
+
+## 9da2a3c - Tidalu, 2025-05-04 : test for performance tracker
+ __tests__/PerformanceTracker.test.js | 67 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 67 insertions(+)
+
+## e3021ee - Tidalu, 2025-05-04 : test for file manager
+ __tests__/FileManager.test.js | 46 +++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
+
+## 92b7d07 - Tidalu, 2025-05-04 : dynamic data
+ data/Ahmadjon_profile.json      |   6 ++
+ data/Ahmadjon_selectedShoe.json |  12 ++++
+ data/Ahmadjon_shoes.json        | 122 ++++++++++++++++++++++++++++++++++++++++
+ data/Ahmadjon_userShoeData.json |   1 +
+ data/activeUser.json            |   2 +-
+ data/otabek_profile.json        |   5 ++
+ data/otabek_selectedShoe.json   |  12 ++++
+ data/otabek_shoes.json          | 122 ++++++++++++++++++++++++++++++++++++++++
+ data/otabek_userShoeData.json   |   7 +++
+ 9 files changed, 288 insertions(+), 1 deletion(-)
+
+## 8034ebd - Tidalu, 2025-05-04 : commit history
+ bin/commit-history.md | 383 --------------------------------------------------
+ commit-history.md     |  58 ++++++++
+ 2 files changed, 58 insertions(+), 383 deletions(-)
+
+## 17d26d8 - Tidalu, 2025-05-04 : installed jest testing lib
+ package-lock.json | 4436 +++++++++++++++++++++++++++++++++++++++++++++++------
+ package.json      |   13 +-
+ 2 files changed, 3969 insertions(+), 480 deletions(-)
+
+## 79377b4 - Tidalu, 2025-04-22 : update commit history
+ bin/commit-history.md | 383 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 383 insertions(+)
+
 ## 41499e8 - Tidalu, 2025-04-22 : Refactor PerformanceTracker to improve wear level calculation and enhance run logging functionality
  classes/PerformanceTracker.js | 58 +++++++++++++++++++++++++++++++------------
  1 file changed, 42 insertions(+), 16 deletions(-)
