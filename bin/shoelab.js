@@ -238,6 +238,8 @@ program
     process.exit(0);
   });
 
+
+  // TODO : fix the wearLevel data, not working 
 program
   .command("stats")
   .description("Display run and shoe statistics")
