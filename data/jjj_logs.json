@@ -1,0 +1,35 @@
+[
+  {
+    "athleteName": "jjj",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Timberland",
+    "terrain": "mud",
+    "activityLevel": "intense",
+    "distance": 12,
+    "wearLevel": "0.00",
+    "comfortScore": "60.00",
+    "timestamp": "2025-05-20T11:03:37.538Z"
+  },
+  {
+    "athleteName": "jjj",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Timberland",
+    "terrain": "mud",
+    "activityLevel": "intense",
+    "distance": 12,
+    "wearLevel": "0.00",
+    "comfortScore": "60.00",
+    "timestamp": "2025-05-20T11:03:37.538Z"
+  },
+  {
+    "athleteName": "jjj",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Timberland",
+    "terrain": "mud",
+    "activityLevel": "intense",
+    "distance": 11,
+    "wearLevel": "0.00",
+    "comfortScore": "60.00",
+    "timestamp": "2025-05-20T11:03:45.566Z"
+  }
+]

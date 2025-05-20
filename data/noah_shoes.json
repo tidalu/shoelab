@@ -1,0 +1,122 @@
+[
+  {
+    "brand": "Clarks",
+    "modelName": "Merrell",
+    "size": 33,
+    "material": "Coolmax",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "High",
+    "comfortScore": 170,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "K-Swiss",
+    "modelName": "Classic",
+    "size": 40,
+    "material": "Vibram",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 130,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Under Armour",
+    "modelName": "Oboz",
+    "size": 37,
+    "material": "PU",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "High",
+    "comfortScore": 140,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Oboz",
+    "modelName": "Columbia",
+    "size": 48,
+    "material": "EVA",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Low",
+    "comfortScore": 100,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Lowa",
+    "modelName": "Speedcross",
+    "size": 34,
+    "material": "Rubber",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 160,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "New Balance",
+    "modelName": "Mizuno",
+    "size": 42,
+    "material": "Nylon",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 0
+  },
+  {
+    "brand": "Oboz",
+    "modelName": "Classic",
+    "size": 38,
+    "material": "Suede",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 0
+  },
+  {
+    "brand": "Mizuno",
+    "modelName": "Speedcross",
+    "size": 44,
+    "material": "Vibram",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 0
+  },
+  {
+    "brand": "Brooks",
+    "modelName": "Air Max",
+    "size": 47,
+    "material": "Mesh",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 0
+  },
+  {
+    "brand": "Lowa",
+    "modelName": "Saucony",
+    "size": 46,
+    "material": "PU",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": 0
+  }
+]

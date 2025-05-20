@@ -1,0 +1,12 @@
+{
+  "brand": "North Face",
+  "modelName": "Gel-Kayano",
+  "size": 37,
+  "material": "Polyester",
+  "durabilityLeft": 100,
+  "wornOut": false,
+  "type": "HikingBoot",
+  "ankleSupport": true,
+  "comfortScore": 60,
+  "wearLevel": 0
+}
