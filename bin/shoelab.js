@@ -112,12 +112,19 @@ program
       finalName = profile.name;
       saveJSON(`${finalName}_shoes.json`, shoeList);
       console.log(chalk.green("Shoes saved successfully!"));
+      console.log(
+        chalk.blue(
+          "You can now use the 'recommend' command to get shoe recommendations."
+        )
+      );
+    } else {
+      console.log(chalk.yellow("Shoes not saved."));
+      console.log(
+        chalk.blue(
+          "To be able to use the 'recommend' or other commands, please save the shoes."
+        )
+      );
     }
-    console.log(
-      chalk.blue(
-        "You can now use the 'recommend' command to get shoe recommendations."
-      )
-    );
     process.exit(0);
   });
 
