@@ -1,4 +1,5 @@
 const { saveJSON, loadJSON } = require("../utils/FileManager");
+const { loadShoeData } = require("../utils/LoadShoeData");
 const {loadUserContext} = require("../utils/loadUserContext");
 
 class PerformanceTracker {
@@ -10,10 +11,8 @@ class PerformanceTracker {
     if (durabilityLeft <= 0) {
       return 100;
     }
-    return Math.min(
-      100,
-      (totalDistance / (totalDistance + durabilityLeft)) * 100
-    );
+    return (totalDistance / (totalDistance + durabilityLeft)) * 100
+    
   }
   // TODO:  we have implemented the stats by actaully getting logs from a tracker file, because PerformanceTracker removes the logs, os we should have persistent data for the stats, so we should have separate file for the stats for each user, implement this, and change the code accordingly
   
@@ -36,10 +35,14 @@ class PerformanceTracker {
       shoeData[selectedShoe.modelName].durabilityLeft
     );
     shoeData[selectedShoe.modelName].wearLevel = wearLevel.toFixed(2);
+    selectedShoe.wearLevel = wearLevel.toFixed(2);  
   }
-   flattenLogs(logs) {
+  
+  flattenLogs(logs) {
   return logs.flat(Infinity).filter(entry => entry && entry.timestamp);
   }
+
+
   //get logs from the file
   loadLogs() {
     const {activeUser} = loadUserContext(false, false, false);
@@ -52,6 +55,8 @@ class PerformanceTracker {
 
     //flatten the logs
     logs = this.flattenLogs(logs);
+
+
     return logs.map((log) => ({
       ...log,
       timestamp: new Date(log.timestamp),
@@ -65,7 +70,8 @@ class PerformanceTracker {
   }
 
   logRun(athlete, shoe, distance, terrain) {
-    
+  // load shoe data
+  const shoeData = loadShoeData();
     const entry = {
     athleteName: athlete.name,
     shoeType: shoe.constructor.name,
@@ -73,7 +79,7 @@ class PerformanceTracker {
     terrain: terrain,
     activityLevel: athlete.activityLevel,
     distance: distance,
-    wearLevel: shoe.wearLevel.toFixed(2),
+    wearLevel: shoeData[shoe.modelName]?.wearLevel ||shoe.wearLevel.toFixed(2),
     comfortScore: shoe.getComfortScore().toFixed(2),
     timestamp: new Date(),
   };

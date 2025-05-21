@@ -11,7 +11,6 @@ class HikingBoot extends Shoe {
   ) {
     super(brand, modelName, size, material, baseDurability);
     this.ankleSupport = ankleSupport;
-    this.wearLevel = 0;
   }
 
   simulateStep({ terrain = "rocky", intensity = 1 }) {
@@ -35,7 +34,7 @@ class HikingBoot extends Shoe {
     const toughnessFactor = 0.7;
 
     const wearAdded = intensity * wearMultiplier * toughnessFactor * 2.5;
-    this.wearLevel += wearAdded;
+    this.wearLevel = Math.min(100, this.wearLevel + wearAdded);
   }
 
   getComfortScore() {
@@ -51,7 +50,7 @@ class HikingBoot extends Shoe {
       type: this.constructor.name,
       ankleSupport: this.ankleSupport,
       comfortScore: this.getComfortScore(),
-      wearLevel: this.wearLevel,
+      wearLevel: this.wearLevel.toFixed(2),
     };
   }
 }

@@ -11,7 +11,6 @@ class RunningShoe extends Shoe {
   ) {
     super(brand, modelName, size, material, baseDurability);
     this.cushioningLevel = cushioningLevel;
-    this.wearLevel = 0;
   }
 
   simulateStep({ terrain = "track", intensity = 1 }) {
@@ -40,7 +39,7 @@ class RunningShoe extends Shoe {
       }[this.cushioningLevel] || 1.0;
 
     const wearAdded = intensity * wearMultiplier * cushionFactor * 2;
-    this.wearLevel += wearAdded;
+    this.wearLevel += Math.min(100, this.wearLevel + wearAdded);
   }
 
   getComfortScore() {

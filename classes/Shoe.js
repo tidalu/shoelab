@@ -11,8 +11,8 @@ class Shoe {
     this.size = size;
     this.material = material;
     this.baseDurability = baseDurability;
-    this.wearLevel = 100 - (this.durabilityLeft / this.baseDurability) * 100;
-    this.durabilityLeft = Math.floor(Math.random() * this.baseDurability);
+    this.wearLevel = 0
+    this.durabilityLeft = baseDurability;
 
     Shoe.totalShoesCreated++;
   }

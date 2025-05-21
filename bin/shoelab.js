@@ -359,6 +359,7 @@ async function runAction(profile, selShoes) {
       selectedShoe.durabilityLeft
     );
     shoeData[selectedShoe.modelName].wearLevel = wearLevel.toFixed(2);
+    selectedShoe.wearLevel = parseFloat(wearLevel.toFixed(2));
 
     // updateed shoe status
     console.log(
@@ -411,6 +412,9 @@ async function runAction(profile, selShoes) {
       // save
       if (!isNaN(index) && index >= 1 && index <= 3 && updatedRank[index - 1]) {
         selectedShoe = updatedRank[index - 1].shoe;
+        if(shoeData[selectedShoe.modelName]){
+          selectedShoe.wearLevel = parseFloat(shoeData[selectedShoe.modelName].wearLevel) || 0;
+        }
         saveJSON(`${profile.name}_selectedShoe.json`, selectedShoe);
         console.log(
           `\n👟 You selected: ${selectedShoe.brand} ${selectedShoe.modelName}`

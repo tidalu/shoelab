@@ -1,5 +1,8 @@
+const { loadShoeData } = require("../utils/LoadShoeData");
+
 class RecommendationEngine {
   static recommend(athlete, shoes) {
+    const shoeData = loadShoeData(shoes);
     const recommendations = shoes.map((shoe) => {
       let score = 0;
 
@@ -33,7 +36,7 @@ class RecommendationEngine {
       }
 
       // wear penalty
-      const wear = parseFloat(shoe.wearLevel);
+      const wear = parseFloat(shoeData[shoe.modelName]?.wearLevel || shoe.wearLevel);
       const wearPenalty = isNaN(wear) ? 0 : Math.floor(wear);
       score -= wearPenalty;
 
