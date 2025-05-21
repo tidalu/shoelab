@@ -1,0 +1,122 @@
+[
+  {
+    "brand": "Vans",
+    "modelName": "Lowa",
+    "size": 40,
+    "material": "Phylon",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 110,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "UGG",
+    "modelName": "Lowa",
+    "size": 39,
+    "material": "Climacool",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Low",
+    "comfortScore": 120,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Scarpa",
+    "modelName": "Altra",
+    "size": 34,
+    "material": "Polyester",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "High",
+    "comfortScore": 170,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Mizuno",
+    "modelName": "Salewa",
+    "size": 39,
+    "material": "Phylon",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 110,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "New Balance",
+    "modelName": "Salomon",
+    "size": 37,
+    "material": "Rubber",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "High",
+    "comfortScore": 200,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Brooks",
+    "modelName": "Asics",
+    "size": 34,
+    "material": "Cotton",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Keen",
+    "modelName": "Mizuno",
+    "size": 47,
+    "material": "Neoprene",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Mizuno",
+    "modelName": "Vasque",
+    "size": 35,
+    "material": "Suede",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Saucony",
+    "modelName": "Altra",
+    "size": 40,
+    "material": "Gore-Tex Surround",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": false,
+    "comfortScore": 50,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Diadora",
+    "modelName": "Air Max",
+    "size": 47,
+    "material": "Mesh",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  }
+]
