@@ -1,5 +1,6 @@
 
 function VisualizeWearLevel(wearLevel) {
+    console.log("Wear Level Visualization ---> ", wearLevel);
     const wearProgress = Math.min(wearLevel, 100);
     const barLength = 20;
     const progressBar = "█".repeat(Math.floor((wearProgress / 100) * barLength));
