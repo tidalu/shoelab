@@ -1,16 +1,5 @@
 const { RunningShoe, HikingBoot } = require("../classes/ShoeTypes");
 
-// const shoeData = {
-//   type: "RunningShoe",
-//   brand: "Nike",
-//   modelName: "Air Max",
-//   size: 42,
-//   material: "Mesh",
-//   durabilityLeft: 100,
-//   cushioningLevel: "High",
-//   wearLevel: "10.0",
-// };  smple shoe data
-
 function reviveShoe(shoe) {
   let revived;
   if (shoe instanceof RunningShoe || shoe instanceof HikingBoot) {
@@ -29,6 +18,7 @@ function reviveShoe(shoe) {
   }
   Object.assign(revived, shoe);
   revived.wearLevel = parseFloat(shoe.wearLevel);
+  console.log("wearlevel in shoe rweviever, and revived shoe ---> ", revived, revived.wearLevel);
   return revived;
 }
 
