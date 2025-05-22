@@ -11,9 +11,8 @@ class Shoe {
     this.size = size;
     this.material = material;
     this.baseDurability = baseDurability;
-    this.wearLevel = 0
+    this.wearLevel = 0;
     this.durabilityLeft = baseDurability;
-
     Shoe.totalShoesCreated++;
   }
 

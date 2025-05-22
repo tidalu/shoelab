@@ -37,7 +37,7 @@ async function LoadExistingFiles() {
       profile.preferredType
     );
   } else {
-    console.log("❌ Invalid input. Please enter a number.");
+    console.log("❌ Invalid input. Looks like you don't have a profile. so we should create one.");
     return null;
   }
 }

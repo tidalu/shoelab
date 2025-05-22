@@ -1,6 +1,7 @@
 const { loadJSON } = require("./FileManager");
 const  reviveShoes  = require("./reviveShoes");
 const AthleteProfile = require("../classes/AthleteProfile");
+const chalk = require("chalk");
 
 function loadUserContext(requireProfile = true, requireShoes = false, requireSelectedShoe = false) {
   // active usr
@@ -26,11 +27,12 @@ function loadUserContext(requireProfile = true, requireShoes = false, requireSel
   }
 
   // shoes
-  let shoes = null;
+  let shoes = [];
   if (requireShoes) {
     shoes = reviveShoes(loadJSON(`${activeUser.name}_shoes.json`));
     if (!shoes || shoes.length === 0) {
-      throw new Error("No saved shoes found. Please run `generate` first.");
+      console.log(chalk.red("No saved shoes found. Please run `generate` first."));
+      process.exit(1);
     }
   }
 
@@ -39,7 +41,13 @@ function loadUserContext(requireProfile = true, requireShoes = false, requireSel
   if (requireSelectedShoe) {
     selectedShoe = reviveShoes(loadJSON(`${activeUser.name}_selectedShoe.json`));
     if (!selectedShoe) {
-      throw new Error("No selected shoe found. Please run `recommend` first.");
+      console.log(chalk.red("No selected shoe found. Please run `recommend` first."));
+      process.exit(1);
+    } else if(selectedShoe.wearLevel >= 100) {
+      console.log(chalk.yellow("Selected shoe is worn out. Please run `generate` first."));
+      process.exit(1);
+    } else if(!selectedShoe.wearLevel ) {
+      selectedShoe.wearLevel = 0;
     }
   }
 

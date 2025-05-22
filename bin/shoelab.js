@@ -54,10 +54,25 @@ program
           footSize = validateFootSize(
             await askQuestion("📏 Your foot size (EU, 30-50)? ")
           );
+          break;
+        } catch (error) {
+          console.log(chalk.red(`❌ ${error.message}`));
+        }
+      }
+
+      while (true) {
+        try {
           preferredTerrain = await askQuestion(
             "🌍 Preferred terrain (trail, rocky, mud)? "
           );
+          break;
+        } catch (error) {
+          console.log(chalk.red(`❌ ${error.message}`));
+        }
+      }
 
+      while (true) {
+        try {
           activityLevel = validateActivityLevel(
             await askQuestion("🔥 Activity level (light, moderate, intense)? ")
           );
@@ -103,6 +118,13 @@ program
       shoes.forEach((shoe, i) => {
         console.log(`#${i + 1} - ${shoe.brand} ${shoe.modelName}`);
       });
+    } else {
+      console.log(chalk.yellow("any answer other than yes will be no"));
+      console.log(
+        chalk.blue(
+          "You can use the 'recommend' command to get shoe recommendations."
+        )
+      );
     }
     const saveShoeList = await askQuestion(
       "Would you like to save the generated shoes? (yes/no) "
@@ -121,7 +143,7 @@ program
       console.log(chalk.yellow("Shoes not saved."));
       console.log(
         chalk.blue(
-          "To be able to use the 'recommend' or other commands, please save the shoes."
+          "To be able to use the 'recommend' or other commands, please save the shoes. so unfortunately you have to run the 'generate' command again."
         )
       );
     }
@@ -139,13 +161,24 @@ program
     recommendSpinner.succeed("🔍 Recommendations ready!");
     let { profile, shoes, selectedShoe } = loadUserContext(true, true, false);
     finalName = profile.name;
-
+    // load selected shoe
     // load user shoes
     const savedShoes = shoes;
     if (!savedShoes) {
       console.log(chalk.red("❌ No shoes found. Please generate shoes first."));
       process.exit(0);
     }
+
+    // filter out the shoe of the user
+    savedShoes = savedShoes.filter((shoe) => {
+      if (
+        shoe.modelName === selectedShoe.modelName &&
+        shoe.brand === selectedShoe.brand &&
+        shoe.size === selectedShoe.size
+      ) {
+        return false;
+      }
+    });
     const ranked = RecommendationEngine.recommend(profile, savedShoes);
     ranked.slice(0, 3).forEach((r, i) => {
       console.log(`\n#${i + 1} 🥇 Score: ${r.score}`);
@@ -238,16 +271,13 @@ program
     process.exit(0);
   });
 
-
-  // TODO : fix the wearLevel data, not working 
+// TODO : fix the wearLevel data, not working : DONE
 program
   .command("stats")
   .description("Display run and shoe statistics")
   .action(async () => {
     const { activeUser, profile } = loadUserContext(true, false, false);
-    console.log(profile);
     const stats = tracker.getRunStats();
-    console.log(stats);
     if (stats.runLogs.length === 0) {
       console.log(
         chalk.yellow(
@@ -343,25 +373,87 @@ async function runAction(profile, selShoes) {
     if (!shoeData[selectedShoe.modelName]) {
       shoeData[selectedShoe.modelName] = {
         totalDistance: 0,
-        durabilityLeft: selectedShoe.durabilityLeft,
+        durabilityLeft: selectedShoe.baseDurability,
         wearLevel: 0,
       };
+      selectedShoe.wearLevel = 0;
     }
 
-    shoeData[selectedShoe.modelName].totalDistance += distanceRan;
-    shoeData[selectedShoe.modelName].durabilityLeft = Math.max(
+    const currentWearLevel =
+      parseFloat(shoeData[selectedShoe.modelName].wearLevel) || 0;
+    if (currentWearLevel >= 100) {
+      console.log(
+        chalk.red(
+          `❌ Your ${selectedShoe.brand} ${selectedShoe.modelName} is fully worn out (wear level: ${currentWearLevel}%).`
+        )
+      );
+      console.log(
+        chalk.red(
+          `Please select a different shoe using the 'recommend' command.`
+        )
+      );
+      process.exit(0);
+    }
+
+    // Check if the run would exceed durability
+    if (distanceRan > shoeData[selectedShoe.modelName].durabilityLeft) {
+      console.log(
+        chalk.red(
+          `❌ You can't run ${distanceRan} km in your ${selectedShoe.brand} ${selectedShoe.modelName}.`
+        )
+      );
+      console.log(
+        chalk.red(
+          `❌ Remaining durability is only ${
+            shoeData[selectedShoe.modelName].durabilityLeft
+          } km.`
+        )
+      );
+      console.log(
+        chalk.red(`Please select a different shoe or reduce the distance.`)
+      );
+      process.exit(0);
+    }
+
+    // Predict wearLevel after the run
+    const predictedTotalDistance =
+      shoeData[selectedShoe.modelName].totalDistance + distanceRan;
+    const predictedDurabilityLeft = Math.max(
       0,
       shoeData[selectedShoe.modelName].durabilityLeft - distanceRan
     );
-
-    const wearLevel = PerformanceTracker.calculateWearLevel(
-      shoeData[selectedShoe.modelName].totalDistance,
-      selectedShoe.durabilityLeft
+    const predictedWearLevel = PerformanceTracker.calculateWearLevel(
+      predictedTotalDistance,
+      predictedDurabilityLeft
     );
-    shoeData[selectedShoe.modelName].wearLevel = wearLevel.toFixed(2);
-    selectedShoe.wearLevel = parseFloat(wearLevel.toFixed(2));
 
-    // updateed shoe status
+    if (predictedWearLevel >= 100 && predictedDurabilityLeft > 0) {
+      console.log(
+        chalk.red(
+          `❌ Running ${distanceRan} km would fully wear out your ${
+            selectedShoe.brand
+          } ${
+            selectedShoe.modelName
+          } (predicted wear level: ${predictedWearLevel.toFixed(2)}%).`
+        )
+      );
+      console.log(
+        chalk.red(
+          `Please select a different shoe or reduce the distance to ${
+            shoeData[selectedShoe.modelName].durabilityLeft
+          } km or less.`
+        )
+      );
+      process.exit(0);
+    }
+
+    // Update shoeData
+    shoeData[selectedShoe.modelName].totalDistance = predictedTotalDistance;
+    shoeData[selectedShoe.modelName].durabilityLeft = predictedDurabilityLeft;
+    shoeData[selectedShoe.modelName].wearLevel = predictedWearLevel.toFixed(2);
+    selectedShoe.wearLevel = parseFloat(predictedWearLevel.toFixed(2));
+
+    // Update shoe status
     console.log(
       `\n🏃‍♂️ You ran ${distanceRan} km in your ${selectedShoe.brand} ${selectedShoe.modelName}.`
     );
@@ -383,7 +475,7 @@ async function runAction(profile, selShoes) {
       distanceRan,
       profile.preferredTerrain
     );
-    // update data
+    // Update data
     saveShoeData(shoeData);
 
     const recommendBasedOnWearLevel = await askQuestion(
@@ -395,13 +487,13 @@ async function runAction(profile, selShoes) {
         (r) => r.shoe.durabilityLeft > 0
       );
 
-      // display updated recommendations
+      // Display updated recommendations
       updatedRank.slice(0, 3).forEach((r, i) => {
         console.log(`\n#${i + 1} 🥇 Score: ${r.score}`);
         console.table(r.shoe);
       });
 
-      // append the selected shoe to the shoe data
+      // Append the selected shoe to the shoe data
       const newSelectedShoe = validateSelection(
         await askQuestion(
           "Which shoe would you like to select and save? (1, 2, or 3) "
@@ -409,11 +501,18 @@ async function runAction(profile, selShoes) {
         3
       );
       const index = parseInt(newSelectedShoe);
-      // save
+      // Save
       if (!isNaN(index) && index >= 1 && index <= 3 && updatedRank[index - 1]) {
         selectedShoe = updatedRank[index - 1].shoe;
-        if(shoeData[selectedShoe.modelName]){
-          selectedShoe.wearLevel = parseFloat(shoeData[selectedShoe.modelName].wearLevel) || 0;
+        if (shoeData[selectedShoe.modelName]) {
+          selectedShoe.wearLevel =
+            parseFloat(shoeData[selectedShoe.modelName].wearLevel) || 0;
+        } else {
+          shoeData[selectedShoe.modelName] = {
+            totalDistance: 0,
+            durabilityLeft: selectedShoe.baseDurability,
+            wearLevel: 0,
+          };
         }
         saveJSON(`${profile.name}_selectedShoe.json`, selectedShoe);
         console.log(
@@ -431,8 +530,6 @@ async function runAction(profile, selShoes) {
     );
     if (trackAnotherRun.toLowerCase() === "yes") {
       console.log("Tracking another run...");
-
-      // run command action again
       console.log("Running the run command again...");
       runAction(profile, selectedShoe);
     } else {

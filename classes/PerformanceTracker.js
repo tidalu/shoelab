@@ -55,7 +55,10 @@ class PerformanceTracker {
 
     //flatten the logs
     logs = this.flattenLogs(logs);
-
+    // remove duplicates
+    logs = logs.filter((log, index, self) =>
+      index === self.findIndex((l) => l.timestamp === log.timestamp)
+    );
 
     return logs.map((log) => ({
       ...log,
@@ -71,7 +74,9 @@ class PerformanceTracker {
 
   logRun(athlete, shoe, distance, terrain) {
   // load shoe data
+  
   const shoeData = loadShoeData();
+  const wearLevel = parseFloat(shoeData[shoe.modelName]?.wearLevel) || shoe.wearLevel || 0;
     const entry = {
     athleteName: athlete.name,
     shoeType: shoe.constructor.name,
@@ -79,7 +84,7 @@ class PerformanceTracker {
     terrain: terrain,
     activityLevel: athlete.activityLevel,
     distance: distance,
-    wearLevel: shoeData[shoe.modelName]?.wearLevel ||shoe.wearLevel.toFixed(2),
+    wearLevel: wearLevel,
     comfortScore: shoe.getComfortScore().toFixed(2),
     timestamp: new Date(),
   };
