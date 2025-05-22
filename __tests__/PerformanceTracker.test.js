@@ -68,3 +68,7 @@ describe("PerformanceTracker", () => {
     });
   });
 });
+
+
+//  TODO :  problem: logs are being saved with duplicates: possibly it depends on how we saved, we are appending everything from the array to the file so it is getting duplicated, instead of everytime filtering out the duplicates and then saving it we should fix that in place while saving
+//  TODO :  problem: it is showing that we are not saving the logs with timestamp, but we are saving it with timestamp, so we need to check the test case for that
