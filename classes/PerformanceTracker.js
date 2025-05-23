@@ -1,21 +1,21 @@
 const { saveJSON, loadJSON } = require("../utils/FileManager");
 const { loadShoeData } = require("../utils/LoadShoeData");
-const {loadUserContext} = require("../utils/loadUserContext");
+const { loadUserContext } = require("../utils/loadUserContext");
 
 class PerformanceTracker {
   constructor() {
+    const { activeUser } = loadUserContext(false, false, false);
+    this.activeUser = activeUser.name;
     this.logs = this.loadLogs();
   }
-  
+
   static calculateWearLevel(totalDistance, durabilityLeft) {
     if (durabilityLeft <= 0) {
       return 100;
     }
-    return (totalDistance / (totalDistance + durabilityLeft)) * 100
-    
+    return (totalDistance / (totalDistance + durabilityLeft)) * 100;
   }
-  // TODO:  we have implemented the stats by actaully getting logs from a tracker file, because PerformanceTracker removes the logs, os we should have persistent data for the stats, so we should have separate file for the stats for each user, implement this, and change the code accordingly
-  
+
   static trackRun(shoeData, selectedShoe, distanceRan) {
     if (!shoeData[selectedShoe.modelName]) {
       shoeData[selectedShoe.modelName] = {
@@ -29,73 +29,62 @@ class PerformanceTracker {
       0,
       shoeData[selectedShoe.modelName].durabilityLeft - distanceRan
     );
-    
+
     const wearLevel = PerformanceTracker.calculateWearLevel(
       shoeData[selectedShoe.modelName].totalDistance,
       shoeData[selectedShoe.modelName].durabilityLeft
     );
     shoeData[selectedShoe.modelName].wearLevel = wearLevel.toFixed(2);
-    selectedShoe.wearLevel = wearLevel.toFixed(2);  
-  }
-  
-  flattenLogs(logs) {
-  return logs.flat(Infinity).filter(entry => entry && entry.timestamp);
-  }
+    selectedShoe.wearLevel = wearLevel.toFixed(2);
+    
 
+    return shoeData;
+  }
 
   //get logs from the file
-  loadLogs() {
-    const {activeUser} = loadUserContext(false, false, false);
-    let logs = loadJSON(`${activeUser.name}_logs.json`);
+  loadLogs(name) {
+    let logs = loadJSON(`${name ?  name : this.activeUser}_logs.json`);
     // if file is not present, create it
     if (!logs) {
-      saveJSON(`${activeUser.name}_logs.json`, [], true);
+      saveJSON(`${name ?  name : this.activeUser}_logs.json`, [], true);
       return [];
     }
-
-    //flatten the logs
-    logs = this.flattenLogs(logs);
-    // remove duplicates
-    logs = logs.filter((log, index, self) =>
-      index === self.findIndex((l) => l.timestamp === log.timestamp)
-    );
-
     return logs.map((log) => ({
       ...log,
       timestamp: new Date(log.timestamp),
     }));
   }
-  setLogs(logs) {
-    const {activeUser} = loadUserContext(false, false, false);
+  setLogs(logs = [], name) {
 
     // when file is not present, create it
-    saveJSON(`${activeUser.name}_logs.json`, logs, true);
+    saveJSON(`${name? name : this.activeUser}_logs.json`, logs, true);
   }
 
   logRun(athlete, shoe, distance, terrain) {
-  // load shoe data
-  
-  const shoeData = loadShoeData();
-  const wearLevel = parseFloat(shoeData[shoe.modelName]?.wearLevel) || shoe.wearLevel || 0;
-    const entry = {
-    athleteName: athlete.name,
-    shoeType: shoe.constructor.name,
-    shoeModel: shoe.modelName,
-    terrain: terrain,
-    activityLevel: athlete.activityLevel,
-    distance: distance,
-    wearLevel: wearLevel,
-    comfortScore: shoe.getComfortScore().toFixed(2),
-    timestamp: new Date(),
-  };
+    // load shoe data
 
-  this.logs.push(entry);
-  this.setLogs(this.logs);
+    const shoeData = loadShoeData();
+    const wearLevel =
+      parseFloat(shoeData[shoe.modelName]?.wearLevel) || shoe.wearLevel || 0;
+    const entry = {
+      athleteName: athlete.name,
+      shoeType: shoe.constructor.name,
+      shoeModel: shoe.modelName,
+      terrain: terrain,
+      activityLevel: athlete.activityLevel,
+      distance: distance,
+      wearLevel: wearLevel,
+      comfortScore: shoe.getComfortScore().toFixed(2),
+      timestamp: new Date(),
+    };
+
+    this.logs.push(entry);
+    this.setLogs(entry, athlete.name);
   }
 
   getRunStats() {
     // get log data
-    let logData = this.loadLogs()
+    let logData = this.loadLogs();
     const totalDistance = logData.reduce((sum, log) => sum + log.distance, 0);
     const runsByShoe = {};
     logData.forEach((log) => {
@@ -125,13 +114,12 @@ class PerformanceTracker {
     }
   }
 
-  getLogs() {
-    
-    return this.loadLogs();
+  getLogs(name) {
+    return this.loadLogs(name ? name : this.activeUser);
   }
 
-  printLogs() {
-    console.table(this.logs, [
+  printLogs(name) {
+    console.table(this.loadLogs(name ? name : this.activeUser), [
       "athleteName",
       "shoeType",
       "shoeModel",
