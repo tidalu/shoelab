@@ -9,8 +9,10 @@ if (!fs.existsSync(DATA_DIR)) {
 function saveJSON(filename, data, update = false) {
   if (update) {
     const existingData = loadJSON(filename);
+    
+    console.log("existingData", existingData);
     if (existingData) {
-      data = [...existingData, ...data];
+      data = [...existingData, data];
     }
   }
 
