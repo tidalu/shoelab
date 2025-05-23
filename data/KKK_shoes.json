@@ -1,0 +1,122 @@
+[
+  {
+    "brand": "New Balance",
+    "modelName": "Oboz",
+    "size": 34,
+    "material": "EVA",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "High",
+    "comfortScore": 200,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Diadora",
+    "modelName": "Fresh Foam",
+    "size": 44,
+    "material": "Gore-Tex",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 190,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Salomon",
+    "modelName": "Gel-Kayano",
+    "size": 34,
+    "material": "Mesh",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 110,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "K-Swiss",
+    "modelName": "Air Max",
+    "size": 36,
+    "material": "Coolmax",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 160,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Timberland",
+    "modelName": "Clyde",
+    "size": 45,
+    "material": "Coolmax",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 110,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Ecco",
+    "modelName": "Terrex",
+    "size": 48,
+    "material": "Gore-Tex",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Fila",
+    "modelName": "Mizuno",
+    "size": 46,
+    "material": "Phylon",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": false,
+    "comfortScore": 50,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Columbia",
+    "modelName": "Keen",
+    "size": 42,
+    "material": "Polyester",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Fila",
+    "modelName": "Speedcross",
+    "size": 39,
+    "material": "Rubber",
+    "durabilityLeft": 180,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Ecco",
+    "modelName": "Keen",
+    "size": 30,
+    "material": "TPU",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  }
+]
