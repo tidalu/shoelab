@@ -163,7 +163,7 @@ program
     finalName = profile.name;
     // load selected shoe
     // load user shoes
-    const savedShoes = shoes;
+    let savedShoes = shoes;
     if (!savedShoes) {
       console.log(chalk.red("❌ No shoes found. Please generate shoes first."));
       process.exit(0);
@@ -171,6 +171,9 @@ program
 
     // filter out the shoe of the user
     savedShoes = savedShoes.filter((shoe) => {
+      if (!selectedShoe) {
+        return true;
+      }
       if (
         shoe.modelName === selectedShoe.modelName &&
         shoe.brand === selectedShoe.brand &&
