@@ -10,7 +10,6 @@ function saveJSON(filename, data, update = false) {
   if (update) {
     const existingData = loadJSON(filename);
     
-    console.log("existingData", existingData);
     if (existingData) {
       data = [...existingData, data];
     }
