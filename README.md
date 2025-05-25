@@ -204,9 +204,11 @@ To contribute or modify the project:
 6. Open a pull request.
 
 ## Future Improvements
-
-- Support additional shoe types (e.g., trail running shoes).
-- Move hardcoded data (brands, models) to a configuration file.
+- Enhance Calculation Precision for Real-World Use ( Strava, Garmin)
+- Replace Dummy Shoes with Real Brand Models via API ( dont forget to add falback logic )
+- Add Real User Accounts with MongoDB Integration ( bcrypt, jsonwebtoken, Mongoose )
+- Enable Shoe Buying, Selling, and Visual Display ( probably i will give links for the product image, or there is a second option which is adding features to download to users device and give them path for the images location )
+- Support Shoe Swapping and Renting
 - Enhance recommendations with user feedback or external data.
 - Add integration tests for CLI workflows.
 
