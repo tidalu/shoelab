@@ -1,0 +1,222 @@
+[
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Fresh Foam",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 1,
+    "wearLevel": "2.00",
+    "comfortScore": "59.20",
+    "timestamp": "2025-05-25T18:08:00.255Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Fresh Foam",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 2,
+    "wearLevel": 2,
+    "comfortScore": "57.60",
+    "timestamp": "2025-05-25T18:08:10.575Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Fresh Foam",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 3,
+    "wearLevel": 6,
+    "comfortScore": "55.20",
+    "timestamp": "2025-05-25T18:08:16.986Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Fresh Foam",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 4,
+    "wearLevel": 12,
+    "comfortScore": "52.00",
+    "timestamp": "2025-05-25T18:08:22.083Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Fresh Foam",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 5,
+    "wearLevel": 20,
+    "comfortScore": "48.00",
+    "timestamp": "2025-05-25T18:08:27.470Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Fresh Foam",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 6,
+    "wearLevel": 30,
+    "comfortScore": "43.20",
+    "timestamp": "2025-05-25T18:08:32.915Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Fresh Foam",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 7,
+    "wearLevel": 42,
+    "comfortScore": "37.60",
+    "timestamp": "2025-05-25T18:08:40.242Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Fresh Foam",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 8,
+    "wearLevel": 56,
+    "comfortScore": "31.20",
+    "timestamp": "2025-05-25T18:08:47.676Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Fresh Foam",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 9,
+    "wearLevel": 72,
+    "comfortScore": "24.00",
+    "timestamp": "2025-05-25T18:08:54.996Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Fresh Foam",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 10,
+    "wearLevel": 90,
+    "comfortScore": "20.00",
+    "timestamp": "2025-05-25T18:09:05.412Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "RunningShoe",
+    "shoeModel": "Hurricane",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 10,
+    "wearLevel": "20.00",
+    "comfortScore": "90.00",
+    "timestamp": "2025-05-25T18:11:21.015Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "RunningShoe",
+    "shoeModel": "Hurricane",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 20,
+    "wearLevel": 20,
+    "comfortScore": "50.00",
+    "timestamp": "2025-05-25T18:13:52.589Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "RunningShoe",
+    "shoeModel": "Hurricane",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 23,
+    "wearLevel": 60,
+    "comfortScore": "10.00",
+    "timestamp": "2025-05-25T18:14:40.318Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Keen",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 1,
+    "wearLevel": "2.00",
+    "comfortScore": "59.20",
+    "timestamp": "2025-05-25T18:16:15.339Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Keen",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 30,
+    "wearLevel": 2,
+    "comfortScore": "35.20",
+    "timestamp": "2025-05-25T18:16:24.452Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "HikingBoot",
+    "shoeModel": "Keen",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 19,
+    "wearLevel": 62,
+    "comfortScore": "20.00",
+    "timestamp": "2025-05-25T18:16:33.755Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "RunningShoe",
+    "shoeModel": "Speedcross",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 50,
+    "wearLevel": "100.00",
+    "comfortScore": "10.00",
+    "timestamp": "2025-05-25T18:17:33.205Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "RunningShoe",
+    "shoeModel": "Gel-Kayano",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 11,
+    "wearLevel": "22.00",
+    "comfortScore": "78.00",
+    "timestamp": "2025-05-25T18:20:28.356Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "RunningShoe",
+    "shoeModel": "Gel-Kayano",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 22,
+    "wearLevel": 22,
+    "comfortScore": "34.00",
+    "timestamp": "2025-05-25T18:20:37.661Z"
+  },
+  {
+    "athleteName": "ulugbek",
+    "shoeType": "RunningShoe",
+    "shoeModel": "Gel-Kayano",
+    "terrain": "50",
+    "activityLevel": "intense",
+    "distance": 33,
+    "wearLevel": 66,
+    "comfortScore": "0.00",
+    "timestamp": "2025-05-25T18:20:45.488Z"
+  }
+]

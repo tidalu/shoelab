@@ -1,0 +1,122 @@
+[
+  {
+    "brand": "Saucony",
+    "modelName": "Speedcross",
+    "size": 41,
+    "material": "Gore-Tex Surround",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 110,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "K-Swiss",
+    "modelName": "Wave Rider",
+    "size": 34,
+    "material": "Canvas",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 160,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Nike",
+    "modelName": "Gel-Kayano",
+    "size": 49,
+    "material": "Coolmax",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Low",
+    "comfortScore": 120,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "On",
+    "modelName": "Hurricane",
+    "size": 46,
+    "material": "Neoprene",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Medium",
+    "comfortScore": 110,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Converse",
+    "modelName": "Saucony",
+    "size": 36,
+    "material": "Polyester",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "RunningShoe",
+    "cushioningLevel": "Low",
+    "comfortScore": 120,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Hoka One One",
+    "modelName": "Speedcross",
+    "size": 38,
+    "material": "Gore-Tex",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Oboz",
+    "modelName": "Wave Rider",
+    "size": 37,
+    "material": "Suede",
+    "durabilityLeft": 100,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Oboz",
+    "modelName": "Fresh Foam",
+    "size": 30,
+    "material": "Polyester",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "La Sportiva",
+    "modelName": "Salomon",
+    "size": 35,
+    "material": "PU",
+    "durabilityLeft": 150,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": false,
+    "comfortScore": 50,
+    "wearLevel": "0.00"
+  },
+  {
+    "brand": "Ecco",
+    "modelName": "Keen",
+    "size": 32,
+    "material": "3M Thinsulate",
+    "durabilityLeft": 120,
+    "wornOut": false,
+    "type": "HikingBoot",
+    "ankleSupport": true,
+    "comfortScore": 60,
+    "wearLevel": "0.00"
+  }
+]

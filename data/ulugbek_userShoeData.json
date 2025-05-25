@@ -1,0 +1,27 @@
+{
+  "Fresh Foam": {
+    "totalDistance": 110,
+    "durabilityLeft": 0,
+    "wearLevel": "100.00"
+  },
+  "Hurricane": {
+    "totalDistance": 106,
+    "durabilityLeft": 0,
+    "wearLevel": "100.00"
+  },
+  "Keen": {
+    "totalDistance": 100,
+    "durabilityLeft": 0,
+    "wearLevel": "100.00"
+  },
+  "Speedcross": {
+    "totalDistance": 100,
+    "durabilityLeft": 0,
+    "wearLevel": "100.00"
+  },
+  "Gel-Kayano": {
+    "totalDistance": 132,
+    "durabilityLeft": 0,
+    "wearLevel": "100.00"
+  }
+}

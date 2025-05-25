@@ -1,12 +1,12 @@
 {
-  "brand": "Clarks",
-  "modelName": "Merrell",
-  "size": 33,
+  "brand": "Nike",
+  "modelName": "Gel-Kayano",
+  "size": 49,
   "material": "Coolmax",
   "durabilityLeft": 100,
   "wornOut": false,
   "type": "RunningShoe",
-  "cushioningLevel": "High",
-  "comfortScore": 120,
+  "cushioningLevel": "Low",
+  "comfortScore": 100,
   "wearLevel": "0.00"
 }
