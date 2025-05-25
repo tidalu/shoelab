@@ -204,6 +204,7 @@ To contribute or modify the project:
 6. Open a pull request.
 
 ## Future Improvements
+
 - Enhance Calculation Precision for Real-World Use ( Strava, Garmin)
 - Replace Dummy Shoes with Real Brand Models via API ( dont forget to add falback logic )
 - Add Real User Accounts with MongoDB Integration ( bcrypt, jsonwebtoken, Mongoose )
@@ -220,5 +221,5 @@ MIT License. See LICENSE for details.
 
 Built as a university OOP project to demonstrate object-oriented programming principles, including encapsulation, inheritance, polymorphism, and abstraction.
 
-**AI Assistance:** 
+**AI Assistance:**
 This project utilized Grok 3, built by xAI, to assist with generating documentation, including this README
