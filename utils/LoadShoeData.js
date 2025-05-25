@@ -1,11 +1,11 @@
 const fs = require("fs");
 const path = require("path");
 
-const { activeUser } = require("../utils/getActiveUser.js");
+const { loadUserContext } = require("./loadUserContext.js");
 
 function getUserShoeDataPath() {
-  const user = activeUser();
-  return path.join(__dirname, `../data/${user.name}_userShoeData.json`);
+  const {activeUser} = loadUserContext(false, false, false)
+  return path.join(__dirname, `../data/${activeUser.name}_userShoeData.json`);
 }
 
 function loadShoeData() {
