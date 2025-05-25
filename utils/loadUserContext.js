@@ -2,13 +2,12 @@ const { loadJSON } = require("./FileManager");
 const  reviveShoes  = require("./reviveShoes");
 const AthleteProfile = require("../classes/AthleteProfile");
 const chalk = require("chalk");
+const initFunction = require("./initFunction");
 
 function loadUserContext(requireProfile = true, requireShoes = false, requireSelectedShoe = false) {
   // active usr
-  const activeUser = loadJSON("activeUser.json");
-  if (!activeUser) {
-    throw new Error("No active user found. Please run `init` first.");
-  }
+  const activeUser = loadJSON("activeUser.json") || initFunction();
+
 
   // profile
   let profile = null;
